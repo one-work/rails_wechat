@@ -13,6 +13,7 @@ module Wechat
       attribute :menu_id, :string
       attribute :note, :string
       attribute :state_uuid, :string
+      attribute :broadcast_to, :string
 
       enum :env_version, {
         release: 'release',
@@ -74,6 +75,14 @@ module Wechat
     def to_qrcode!
       commit_to_wechat
       self.save!
+
+      if broadcast_to.present?
+        SessionChannel.broadcast_to(
+          broadcast_to,
+          remaining: scene.remaining_seconds,
+          data_url: scene.qrcode_data_url
+        )
+      end
     end
 
     def qrcode_data_url

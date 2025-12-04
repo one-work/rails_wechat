@@ -15,13 +15,8 @@ module Wechat
         scene.check_refresh
         scene.aim = 'login'
         scene.state_uuid = params[:state] if params[:state].present?
+        scene.broadcast_to = session_id
         scene.save
-
-        broadcast_to(
-          session_id,
-          remaining: scene.remaining_seconds,
-          data_url: scene.qrcode_data_url
-        )
       end
     end
 
