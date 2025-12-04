@@ -79,8 +79,8 @@ module Wechat
       if broadcast_to.present?
         SessionChannel.broadcast_to(
           broadcast_to,
-          remaining: scene.remaining_seconds,
-          data_url: scene.qrcode_data_url
+          remaining: remaining_seconds,
+          data_url: qrcode_data_url
         )
       end
     end
