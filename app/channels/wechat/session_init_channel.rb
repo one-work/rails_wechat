@@ -2,10 +2,6 @@ module Wechat
   class SessionInitChannel < ApplicationCable::Channel
     after_subscribe :init_qrcode
 
-    def subscribed
-      stream_from "wechat:session:#{session_id}"
-    end
-
     private
     def init_qrcode
       provider_app = organ&.provider&.app || App.global.take
