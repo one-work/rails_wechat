@@ -49,6 +49,7 @@ module Wechat
       before_validation :sync_from_app, if: -> { organ_id.blank? && appid.present? && appid_changed? }
       before_validation :init_match_value, if: -> { new_record? && handle }
       after_save_commit :to_qrcode!, if: -> { (saved_changes.keys & ['match_value', 'expire_at', 'env_version']).present? }
+      after_save_commit :broadcast_to_session, if: -> { saved_change_to_broadcast_to? }
       after_save_commit :refresh_when_expired, if: -> { saved_change_to_expire_at? }
       after_create_commit :clean_when_expired, if: -> { aim_login? }
     end
@@ -76,17 +77,17 @@ module Wechat
       commit_to_wechat
       self.save!
 
-      if broadcast_to.present?
-        broadcast_to_session
-      end
+      broadcast_to_session
     end
 
     def broadcast_to_session
-      SessionChannel.broadcast_to(
-        broadcast_to,
-        remaining: remaining_seconds,
-        data_url: qrcode_data_url
-      )
+      if broadcast_to.present? && qrcode_url.present?
+        SessionChannel.broadcast_to(
+          broadcast_to,
+          remaining: remaining_seconds,
+          data_url: qrcode_data_url
+        )
+      end
     end
 
     def qrcode_data_url
