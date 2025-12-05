@@ -82,6 +82,7 @@ module Wechat
 
     def broadcast_to_session
       if broadcast_to.present? && qrcode_url.present?
+        puts '-------------------------'
         SessionChannel.broadcast_to(
           broadcast_to,
           remaining: remaining_seconds,
