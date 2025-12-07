@@ -12,15 +12,15 @@
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:license) %></dt>
-  <dd><%= image_tag @register.license, class: 'image is-128x128' if @register.license.attached? %></dd>
+  <dd><%= image_tag @register.license, class: 'image is-128-h' if @register.license.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:id_avatar) %></dt>
-  <dd><%= image_tag @register.id_avatar, class: 'image is-128x128' if @register.id_avatar.attached? %></dd>
+  <dd><%= image_tag @register.id_avatar, class: 'image is-128-h' if @register.id_avatar.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:id_badge) %></dt>
-  <dd><%= image_tag @register.id_badge, class: 'image is-128x128' if @register.id_badge.attached? %></dd>
+  <dd><%= image_tag @register.id_badge, class: 'image is-128-h' if @register.id_badge.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:bank_number) %></dt>
