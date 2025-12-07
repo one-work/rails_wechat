@@ -7,28 +7,32 @@
   <dd><%= @register.email_code %></dd>
 </div>
 <div>
+  <dt><%= Wechat::Register.human_attribute_name(:mobile) %></dt>
+  <dd><%= @register.mobile %></dd>
+</div>
+<div>
   <dt><%= Wechat::Register.human_attribute_name(:license) %></dt>
-  <dd><%= image_tag @register.license, class: 'image' if @register.license.attached? %></dd>
+  <dd><%= image_tag @register.license, class: 'image is-128x128' if @register.license.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:id_avatar) %></dt>
-  <dd><%= image_tag @register.id_avatar, class: 'image' if @register.id_avatar.attached? %></dd>
+  <dd><%= image_tag @register.id_avatar, class: 'image is-128x128' if @register.id_avatar.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:id_badge) %></dt>
-  <dd><%= image_tag @register.id_badge, class: 'image' if @register.id_badge.attached? %></dd>
+  <dd><%= image_tag @register.id_badge, class: 'image is-128x128' if @register.id_badge.attached? %></dd>
 </div>
 <div>
-  <dt><%= Wechat::Register.human_attribute_name(:id_name) %></dt>
-  <dd><%= @register.id_name %></dd>
+  <dt><%= Wechat::Register.human_attribute_name(:bank_number) %></dt>
+  <dd><%= @register.bank_number %></dd>
 </div>
 <div>
-  <dt><%= Wechat::Register.human_attribute_name(:id_number) %></dt>
-  <dd><%= @register.id_number %></dd>
+  <dt><%= Wechat::Register.human_attribute_name(:bank_name) %></dt>
+  <dd><%= @register.bank_name %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:qrcode) %></dt>
-  <dt><%= image_tag @register.qrcode if @register.qrcode.attached? %></dd>
+  <dd><%= image_tag @register.qrcode if @register.qrcode.attached? %></dd>
 </div>
 <div>
   <dt><%= Wechat::Register.human_attribute_name(:organ_name) %></dt>
