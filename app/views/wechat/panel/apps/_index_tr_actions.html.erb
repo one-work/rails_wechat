@@ -5,7 +5,7 @@
   <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
     <%= svg_tag 'pencil', class: 'icon text-link' %>
   <% end %>
-  <%= button_to({ action: 'service', appid: model.appid }, class: 'button is-small is-borderless') do %>
+  <%= button_to({ action: 'service', id: model.id }, class: 'button is-small is-borderless') do %>
     <%= svg_tag 'gears' %>
     <span class="ml-1"><%= t('.service.title') %></span>
   <% end %>
