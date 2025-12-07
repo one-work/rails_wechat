@@ -7,6 +7,18 @@
   <dd><%= @register.email_code %></dd>
 </div>
 <div>
+  <dt><%= Wechat::Register.human_attribute_name(:license) %></dt>
+  <dd><%= image_tag @register.license, class: 'image' if @register.license.attached? %></dd>
+</div>
+<div>
+  <dt><%= Wechat::Register.human_attribute_name(:id_avatar) %></dt>
+  <dd><%= image_tag @register.id_avatar, class: 'image' if @register.id_avatar.attached? %></dd>
+</div>
+<div>
+  <dt><%= Wechat::Register.human_attribute_name(:id_badge) %></dt>
+  <dd><%= image_tag @register.id_badge, class: 'image' if @register.id_badge.attached? %></dd>
+</div>
+<div>
   <dt><%= Wechat::Register.human_attribute_name(:id_name) %></dt>
   <dd><%= @register.id_name %></dd>
 </div>
