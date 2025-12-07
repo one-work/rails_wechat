@@ -39,7 +39,9 @@ module Wechat
         :weapp_id,
         :platform_appid,
         :debug,
-        :global
+        :global,
+        :service_url,
+        :service_corp
       )
     end
 

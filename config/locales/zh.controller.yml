@@ -168,6 +168,8 @@ zh:
           title: 微信公众号
         key:
           title: 编辑
+        service:
+          title: 配置客服
       corp_external_users:
         index:
           title: 微信用户关联

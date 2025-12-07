@@ -166,6 +166,7 @@ Rails.application.routes.draw do
       resources :apps do
         member do
           get :key
+          match :service, via: [:get, :post]
         end
         concerns :appable
       end
