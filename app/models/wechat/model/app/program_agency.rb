@@ -18,8 +18,6 @@ module Wechat
         verify_later: 4
       }, prefix: true
 
-      has_one_attached :share_code
-
       belongs_to :platform_template, optional: true
     end
 
@@ -245,16 +243,6 @@ module Wechat
       set_domain
       set_privacy
       plugin_apply
-    end
-
-    def generate_share_code
-      url = URI.encode_www_form_component URI::HTTPS.build(host: organ_domain, path: '/factory/productions').to_s
-      r = api.get_wxacode("/pages/index/index?url=#{url}")
-      begin
-        self.share_code.attach io: r, filename: 'share_code.png'
-      rescue => e
-      end
-      r
     end
 
   end
