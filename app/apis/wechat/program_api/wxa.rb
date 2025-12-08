@@ -23,16 +23,7 @@ class Wechat::ProgramApi
 
     def get_wxacode(path = '/pages/index/index', **options)
       path = "#{path}?#{options.delete(:query).to_query}" if options.key?(:query)
-      r = post 'getwxacode', path: path, **options, origin: BASE
-
-      if r.is_a?(Tempfile) && defined? Com::BlobTemp
-        blob = Com::BlobTemp.new(note: path)
-        blob.file.attach io: r, filename: path
-        blob.save
-        blob.url
-      else
-        r
-      end
+      post 'getwxacode', path: path, **options, origin: BASE
     end
 
     def get_wxacode_unlimit(scene, **options)
