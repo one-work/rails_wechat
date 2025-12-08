@@ -248,7 +248,7 @@ module Wechat
     end
 
     def generate_share_code
-      url = URI.encode_www_form_component URI::HTTPS.build(host: organ_domain).to_s
+      url = URI.encode_www_form_component URI::HTTPS.build(host: organ_domain, path: '/factory/productions').to_s
       r = api.get_wxacode("/pages/index/index?url=#{url}")
       begin
         self.share_code.attach io: r, filename: 'share_code.png'
