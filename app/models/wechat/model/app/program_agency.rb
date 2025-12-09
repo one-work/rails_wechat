@@ -81,7 +81,8 @@ module Wechat
         downloaddomain: [
           URI::HTTPS.build(host: organ_domain).to_s,
           URI::HTTPS.build(host: ENV['HOST']).to_s,
-          URI::HTTPS.build(host: "admin.#{Rails.application.routes.default_url_options[:host]}").to_s
+          URI::HTTPS.build(host: "admin.#{Rails.application.routes.default_url_options[:host]}").to_s,
+          URI::HTTPS.build(host: 'images.one.work').to_s
         ],
         udpdomain: [URI::Generic.build(host: organ_domain, scheme: 'udp').to_s],
         tcpdomain: [URI::Generic.build(host: organ_domain, scheme: 'tcp').to_s]
