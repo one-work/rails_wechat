@@ -1,5 +1,5 @@
 <%= form_with theme: 'default_phone', model: @register, url: { action: 'update' } do |f| %>
-  <%= render partial: 'com/attachments/list_edit', locals: { target: f.object.license, f: f } %>
+  <%= render partial: 'com/attachments/list_field_simple', locals: { target: f.object.license, f: f } %>
   <%= f.submit %>
 <% end %>
 
