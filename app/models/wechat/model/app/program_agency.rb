@@ -60,6 +60,7 @@ module Wechat
           URI::HTTPS.build(host: "org.#{Rails.application.routes.default_url_options[:host]}").to_s
         ].uniq.compact
       }
+
       api.webview_domain_directly(**h)
       r = api.webview_domain(**h)
       if r['errcode'] == 0
@@ -87,6 +88,7 @@ module Wechat
         udpdomain: [URI::Generic.build(host: organ_domain, scheme: 'udp').to_s],
         tcpdomain: [URI::Generic.build(host: organ_domain, scheme: 'tcp').to_s]
       }
+
       api.modify_domain_directly(**h)
       api.modify_domain(**h)
     end
