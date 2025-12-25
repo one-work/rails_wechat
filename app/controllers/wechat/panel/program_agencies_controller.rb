@@ -48,7 +48,8 @@ module Wechat
       params.fetch(:agency, {}).permit(
         :logo,
         :organ_id,
-        :webview_domain
+        :webview_domain,
+        :webview_path
       )
     end
 

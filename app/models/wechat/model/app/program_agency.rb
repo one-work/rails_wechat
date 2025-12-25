@@ -100,7 +100,7 @@ module Wechat
           host: URI::HTTPS.build(host: organ_domain).to_s,
           auth_host: URI::HTTPS.build(host: organ_domain).to_s,
           webview_host: URI::HTTPS.build(host: computed_webview_domain).to_s,
-          path: mp_domain&.redirect_path.presence || organ.redirect_path
+          path: webview_path
         }
       }
     end

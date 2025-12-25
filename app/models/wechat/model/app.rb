@@ -41,7 +41,6 @@ module Wechat
       attribute :debug, :boolean, default: false
       attribute :open_appid, :string
       attribute :oauth_domain, :string
-      attribute :webview_domain, :string
       attribute :service_url, :string
       attribute :service_corp, :string
 

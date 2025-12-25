@@ -7,6 +7,8 @@ module Wechat
     included do
       attribute :confirm_name, :string
       attribute :confirm_content, :string
+      attribute :webview_domain, :string
+      attribute :webview_path, :string, default: '/'
 
       has_one_attached :qrcode
 
