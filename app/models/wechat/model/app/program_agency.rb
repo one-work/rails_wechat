@@ -182,6 +182,10 @@ module Wechat
           {
             privacy_key: 'BlueTooth',
             privacy_text: '用于支持蓝牙打印机'
+          },
+          {
+            privacy_key: 'AlbumWriteOnly',
+            privacy_text: '向相册写入二维码图片（用于扫码）'
           }
         ]
       )
