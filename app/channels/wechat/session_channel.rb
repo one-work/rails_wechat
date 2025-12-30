@@ -3,6 +3,10 @@ module Wechat
 
     def subscribed
       stream_from "wechat:session:#{session_id}"
+    end
+
+    def appear(data)
+      logger.debug("--------------#{data}")
       refresh_qrcode
     end
 
