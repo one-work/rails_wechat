@@ -6,7 +6,7 @@ module Wechat
       q_params = {}
       q_params.merge! params.permit(:appid, :open_id)
 
-      @receives = @platform.receives.default_where(q_params).order(id: :desc).page(params[:page])
+      @receives = @platform.receives.includes(:app).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     private
