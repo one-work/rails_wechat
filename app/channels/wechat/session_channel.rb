@@ -1,9 +1,10 @@
 module Wechat
   class SessionChannel < ApplicationCable::Channel
-    after_subscribe :refresh_qrcode
+    #after_subscribe :refresh_qrcode
 
     def subscribed
       stream_from "wechat:session:#{session_id}"
+      refresh_qrcode
     end
 
     private
