@@ -28,7 +28,7 @@ module Wechat
 
     def oauth2_data_url(scope = 'snsapi_base', **host_options)
       r = oauth2_url(scope: scope, **host_options)
-      QrcodeHelper.data_url(r)
+      QrcodeUtil.data_url(r)
     end
 
     def generate_wechat_user(code)
