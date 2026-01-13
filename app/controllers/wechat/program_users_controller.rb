@@ -27,6 +27,7 @@ module Wechat
       elsif @app.respond_to? :webview_url
         @result.merge! url: @app.webview_url(auth_token: @program_user.auth_token)
       end
+      Rails.logger.debug "--------#{@result}"
     end
 
     def mobile
