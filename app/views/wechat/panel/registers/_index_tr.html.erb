@@ -4,5 +4,5 @@
     { href: url_for(action: 'edit_assign', id: model.id), icon: 'hand-point-right', title: t('.edit_assign.title') },
     { href: url_for(action: 'edit_app', id: model.id), icon: 'qrcode', title: t('.edit_app.title') },
     { href: url_for(controller: 'bench/me/tasks', tasking_type: 'Register', tasking_id: model.id), icon: 'list', title: t('.tasks') }
-  )
+  ) { yield }
 %>

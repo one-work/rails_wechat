@@ -6,5 +6,5 @@
     { action: url_for(action: 'templates', id: model.id), icon: 'paperclip', title: t('.templates.title') },
     { action: url_for(controller: 'agencies', action: 'organ', id: model.id), icon: 'building', title: t('.agencies.organ.title') },
     icons: ['show', 'edit']
-  )
+  ) { yield }
 %>
