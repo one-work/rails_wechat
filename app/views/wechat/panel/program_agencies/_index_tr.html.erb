@@ -1,0 +1,10 @@
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'scenes', app_id: model.id), icon: 'qrcode', title: t('.scenes.index.title') },
+    { action: url_for(action: 'qrcode', id: model.id), icon: 'qrcode', title: t('.program_agencies.qrcode.title') },
+    { action: url_for(action: 'templates', id: model.id), icon: 'paperclip', title: t('.program_agencies.templates.title') },
+    { action: url_for(controller: 'agencies', action: 'organ', id: model.id), icon: 'building', title: t('.agencies.organ.title') },
+    icons: ['show', 'edit']
+  )
+%>
