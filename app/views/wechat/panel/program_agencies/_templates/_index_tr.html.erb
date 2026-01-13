@@ -1,0 +1,7 @@
+<%=
+  tr_tag(
+    model,
+    { action: url_for(action: 'commit', id: @program_agency.id, platform_template_id: model.id), icon: 'upload', title: t('.program_agencies.commit.title') },
+    icons: []
+  ) { yield }
+%>
