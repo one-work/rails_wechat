@@ -1,0 +1,7 @@
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'partner_payees', partner_id: model.id), icon: 'building', title: t('.partner_payees.index.title') },
+    { action: url_for(action: 'edit_cert', id: model.id), icon: 'certificate', title: t('.edit_cert.title') }
+  ) { yield }
+%>

@@ -1,0 +1,13 @@
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'maintains', corp_id: model.id), icon: 'users-line', title: t('.maintains.index.title') },
+    { href: url_for(controller: 'corp_users', corp_id: model.id), icon: 'users', title: t('.corp_users.index.title') },
+    {
+      href: url_for(controller: 'suite_receives', suite_id: model.suite_id, **model.receive_filter),
+      icon: 'message',
+      title: t('.suite_receives.index.title')
+    },
+    { action: url_for(action: 'edit_organ', id: model.id), icon: 'building', title: t('.edit_organ.title') }
+  ) { yield }
+%>
