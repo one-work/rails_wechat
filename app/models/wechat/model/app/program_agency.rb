@@ -153,6 +153,13 @@ module Wechat
       r
     end
 
+    def audit_undo!
+      r = api.audit_undo
+      if r['errmsg'] == 'ok'
+        get_audit_status!
+      end
+    end
+
     def get_audit_status!
       r = api.audit_status(auditid)
       self.audit_status = r['status']
@@ -214,6 +221,10 @@ module Wechat
 
     def releasable?
       audit_status_success? && submittable?
+    end
+
+    def regrettable?
+      audit_status_success?
     end
 
     def get_version_info

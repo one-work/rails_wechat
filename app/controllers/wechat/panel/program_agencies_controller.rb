@@ -36,7 +36,7 @@ module Wechat
     end
 
     def audit_undo
-      r = @program_agency.api.audit_undo
+      @program_agency.audit_undo!
     end
 
     def release
