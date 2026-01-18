@@ -219,6 +219,10 @@ module Wechat
       (audit_status.nil? || audit_status_rejected?) && submittable?
     end
 
+    def auditable?
+      submittable? && !audit_status_verifying?
+    end
+
     def releasable?
       audit_status_success? && submittable?
     end
