@@ -224,7 +224,7 @@ module Wechat
     end
 
     def regrettable?
-      audit_status_success?
+      audit_status_verifying?
     end
 
     def get_version_info
