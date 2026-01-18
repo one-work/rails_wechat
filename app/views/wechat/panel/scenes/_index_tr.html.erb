@@ -1,11 +1,24 @@
 <%=
   tr_tag(
     model,
-    { href: url_for(controller: 'menus', scene_id: model.id), icon: 'bars', title: t('.menus.index.title') },
-    { href: url_for(controller: 'wechat_users', scene_tag: model.match_value), icon: 'users', title: t('.wechat_users.index.title') },
-    { href: url_for(controller: 'wechat_users', user_inviter_id: model.handle_id), icon: 'users', title: t('.wechat_users.index.title'), enable: model.handle_type == 'Auth::User' },
     {
-      href: url_for(controller: 'responses', action: 'show', id: model.response.id.to_s),
+      href: url_for(controller: 'menus', scene_id: model.id),
+      icon: 'bars',
+      title: t('.menus.index.title')
+    },
+    {
+      href: url_for(controller: 'wechat_users', scene_tag: model.match_value),
+      icon: 'users',
+      title: t('.wechat_users.index.title')
+    },
+    {
+      href: url_for(controller: 'wechat_users', user_inviter_id: model.handle_id),
+      icon: 'users',
+      title: t('.wechat_users.index.title'),
+      enable: model.handle_type == 'Auth::User'
+    },
+    {
+      href: url_for(controller: 'responses', action: 'show', id: model.response&.id.to_s),
       icon: 'reply-all',
       title: t('.responses.index.title'),
       enable: model.response
