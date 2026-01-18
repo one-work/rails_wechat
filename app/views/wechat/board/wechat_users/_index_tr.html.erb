@@ -1,0 +1,12 @@
+<%=
+  tr_tag(
+    model,
+    {
+      action: url_for(controller: 'auth/board/oauth_users', action: 'destroy', id: model.id),
+      method: 'delete',
+      title: t('auth/board/oauth_users.destroy.title'),
+      confirm: t('.destroy.confirm')
+    },
+    icons: []
+  ) { yield }
+%>

@@ -9,9 +9,4 @@
   <p><%= model.account&.identity %></p>
   <p class="text-grey"><%= model.uid %></p>
 </td>
-<td>
-  <%= button_to({ controller: 'auth/board/oauth_users', action: 'destroy', id: model.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-warning') do %>
-    <span><%= t('.unbind') %></span>
-  <% end %>
-  <%= button_to t('.update_token'), "/auth/#{model.provider}", class: 'button is-success' %>
-</td>
+

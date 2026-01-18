@@ -1,0 +1,12 @@
+<%=
+  tr_tag(
+    model,
+    { action: url_for(action: 'organ', id: model.id), icon: 'building', title: t('.edit.title') },
+    { href: model.fast_url, icon: 'bolt', title: '快速注册', target: '_blank' },
+    { href: url_for(controller: 'requests', app_id: model.id), icon: 'comments', title: t('.requests.index.title') },
+    { href: url_for(controller: 'menu_apps', app_id: model.id), icon: 'bars', title: t('.menu_apps.index.title') },
+    { href: url_for(controller: 'wechat_users', app_id: model.id), icon: 'users', title: t('.wechat_users.index.title') },
+    { href: url_for(controller: 'scenes', app_id: model.id), icon: 'qrcode', title: t('.scenes.index.title') },
+    { href: url_for(controller: 'templates', app_id: model.id), icon: 'inbox', title: t('.templates.index.title') }
+  ) { yield }
+%>
