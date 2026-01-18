@@ -140,6 +140,8 @@ zh:
           title: 发布体验版
         submit:
           title: 提交审核
+        audit_undo:
+          title: 撤回审核
         release:
           title: 发布正式版本
       platforms:

@@ -38,12 +38,17 @@
 </td>
 <td>
   <div><%= model.audit_status_i18n %></div>
-  <% if model.releasable? %>
   <div class="mt-1">
+  <% if model.releasable? %>
     <%= button_to({ action: 'release', id: model.id }, class: 'button is-small is-borderless') do %>
       <%= svg_tag 'cloud-arrow-up' %>
       <span class="ml-1"><%= t('.release.title') %></span>
     <% end %>
-  </div>
+  <% else %>
+    <%= button_to({ action: 'audit_undo', id: model.id }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'cloud-arrow-down' %>
+      <span class="ml-1"><%= t('.audit_undo.title') %></span>
+    <% end %>
   <% end %>
+  </div>
 </td>

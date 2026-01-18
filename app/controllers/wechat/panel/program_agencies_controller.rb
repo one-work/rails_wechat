@@ -3,7 +3,7 @@ module Wechat
     before_action :set_platform
     before_action :set_program_agency, only: [
       :show, :edit, :update,
-      :qrcode, :templates, :commit, :submit, :release
+      :qrcode, :templates, :commit, :submit, :audit_undo, :release
     ]
 
     def index
@@ -33,6 +33,10 @@ module Wechat
 
     def submit
       @program_agency.submit_audit!
+    end
+
+    def audit_undo
+      r = @program_agency.api.audit_undo
     end
 
     def release

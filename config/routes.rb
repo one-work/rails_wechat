@@ -197,6 +197,7 @@ Rails.application.routes.draw do
             match :templates, via: [:get, :post]
             post 'templates/:platform_template_id' => :commit
             post :submit
+            post :audit_undo
             post :release
           end
         end
