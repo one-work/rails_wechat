@@ -6,11 +6,11 @@ gem 'pg'
 gem 'puma'
 gem 'propshaft'
 
-gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_org', github: 'work-design/rails_org'
-gem 'rails_design', github: 'work-design/rails_design'
-gem 'rails_notice', github: 'work-design/rails_notice'
-gem 'rails_auth', github: 'work-design/rails_auth'
+gem 'rails_com', path: '../rails_com'
+gem 'rails_org', path: '../rails_org'
+gem 'rails_ui', path: '../rails_ui'
+gem 'rails_notice', path: '../rails_notice'
+gem 'rails_auth', path: '../rails_auth'
 
 group :development do
   gem 'sdoc'
