@@ -2,5 +2,5 @@
 <%= render 'index_actions' %>
 
 <%= render layout: 'index_table_without_striped' do %>
-  <%= render partial: 'root_tbody', layout: 'root_tr', collection: @menu_roots, as: :model %>
+  <%= render partial: 'root_menu_tbody', layout: 'root_menu_tr', collection: @menu_roots, as: :model %>
 <% end %>
