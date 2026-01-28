@@ -24,7 +24,7 @@ module Wechat
     end
 
     def app_name
-      app.name
+      app&.name
     end
 
   end
