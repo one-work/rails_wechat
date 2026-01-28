@@ -9,7 +9,7 @@ module Wechat
     end
 
     def domain
-      organ&.host
+      organ&.host || webview_domain
     end
 
     def api
