@@ -12,9 +12,9 @@
 <% end %>
 <tr>
   <td colspan="5">
-    <%= button_to({ action: 'new', menu_root_id: model.id }, class: 'pl-4') do %>
+    <%= button_to({ controller: 'menus', action: 'new', menu_root_id: model.id }, class: 'pl-4') do %>
       <%= svg_tag 'plus' %>
-      <span class="ml-1"><%= t('.new.title') %></span>
+      <span class="ml-1"><%= t('.menus.new.title') %></span>
     <% end %>
   </td>
 </tr>
