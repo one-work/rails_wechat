@@ -1,7 +1,12 @@
 <%=
   tr_tag(
     model,
-    { action: url_for(action: 'organ', id: model.id), icon: 'building', title: t('.edit.title') },
+    {
+      action: url_for(action: 'organ', id: model.id),
+      icon: 'building',
+      title: t('.edit.title'),
+      position: 0
+    },
     { href: model.fast_url, icon: 'bolt', title: '快速注册', target: '_blank' },
     { href: url_for(controller: 'requests', app_id: model.id), icon: 'comments', title: t('.requests.index.title') },
     { href: url_for(controller: 'menu_apps', app_id: model.id), icon: 'bars', title: t('.menu_apps.index.title') },
