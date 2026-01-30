@@ -1,0 +1,11 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'wechat_users', action: 'chat', id: model.wechat_user.id),
+      icon: 'inbox',
+      title: t('.wechat_users.chat.title')
+    },
+    icons: ['show', 'destroy']
+  ) { yield }
+%>
