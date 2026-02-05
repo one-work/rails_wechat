@@ -1,6 +1,14 @@
 <%=
   tr_tag(
     model,
-    { href: url_for(controller: 'receivers', app_payee_id: model.id), icon: 'users', title: t('.receivers.index.title'), enable: false }
   ) { yield }
 %>
+
+<%#
+{
+href: url_for(controller: 'receivers', app_payee_id: model.id),
+icon: 'users',
+title: t('.receivers.index.title'),
+enable: false
+}
+    %>

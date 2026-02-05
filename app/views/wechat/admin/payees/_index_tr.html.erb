@@ -1,8 +1,21 @@
 <%=
   tr_tag(
     model,
-    { href: url_for(controller: 'payee_apps', payee_id: model.id), icon: 'amazon-pay', kind: 'brands', title: t('.payee_apps.index.title') },
-    { href: url_for(controller: 'payee_domains', payee_id: model.id), icon: 'globe', title: t('.payee_domains.index.title') },
-    { action: url_for(action: 'edit_cert', id: model.id), icon: 'certificate', title: t('.edit_cert.title') }
+    {
+      href: url_for(controller: 'payee_apps', payee_id: model.id),
+      icon: 'amazon-pay', kind: 'brands',
+      title: t('.payee_apps.index.title')
+    },
+    {
+      href: url_for(controller: 'payee_domains', payee_id: model.id),
+      icon: 'globe',
+      title: t('.payee_domains.index.title')
+    },
+    {
+      action: url_for(action: 'edit_cert', id: model.id),
+      icon: 'certificate',
+      title: t('.edit_cert.title'),
+      position: 0
+    }
   ) { yield }
 %>
