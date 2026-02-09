@@ -1,4 +1,4 @@
-<%= link_to({ controller: '/me/home', host: organ.host, auth_token: Current.session.id }, class: 'media') do %>
+<%= link_to({ controller: '/me/home', host: organ.host, auth_token: Current.session.once_token }, class: 'media') do %>
   <div class="media-content"><%= organ.name %></div>
   <div class="media-right">
     <%= svg_tag 'chevron-right' %>

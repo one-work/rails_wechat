@@ -58,7 +58,7 @@ module Wechat
             controller: @suite.redirect_controller,
             action: @suite.redirect_action,
             host: current_corp_user.organ.host,
-            auth_token: Current.session.id
+            auth_token: Current.session.once_token
           )
         else
           url = url_for(controller: 'org/board/organs')
