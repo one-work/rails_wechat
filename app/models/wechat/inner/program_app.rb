@@ -24,6 +24,18 @@ module Wechat
       organ&.mp_host
     end
 
+    def computed_webview_domain
+      webview_domain.presence || domain
+    end
+
+    def webview_url(**options)
+      Rails.application.routes.url_for(
+        controller: 'home',
+        host: computed_webview_domain,
+        **options
+      )
+    end
+
     def mp_domain
       organ&.mp_domain
     end
