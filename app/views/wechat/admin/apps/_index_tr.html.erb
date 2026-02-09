@@ -1,8 +1,8 @@
 <%=
   tr_tag(
     model,
-    { action: url_for(action: 'info', appid: model.appid), icon: 'gears', title: t('.info.title'), position: 0 },
-    { action: url_for(action: 'service', appid: model.appid), icon: 'gears', title: t('.service.title'), position: 0 },
+    { action: url_for(action: 'info', id: model.id), icon: 'gears', title: t('.info.title'), position: 0 },
+    { action: url_for(action: 'service', id: model.id), icon: 'gears', title: t('.service.title'), position: 0 },
     { href: url_for(controller: 'requests', app_appid: model.appid), icon: 'comments', title: t('.requests.index.title'), position: 1 },
     { href: url_for(controller: 'tags', app_appid: model.appid), icon: 'user-tag', title: t('.tags.index.title'), position: 1 },
     { href: url_for(controller: 'wechat_users', app_appid: model.appid), icon: 'users', title: t('.wechat_users.index.title'), position: 1 },
