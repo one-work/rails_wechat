@@ -1,0 +1,10 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(action: 'chat', id: model.id),
+      icon: 'inbox',
+      title: t('.chat.title')
+    }
+  ) { yield }
+%>

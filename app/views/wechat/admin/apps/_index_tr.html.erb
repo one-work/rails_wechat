@@ -9,7 +9,7 @@
     { href: url_for(controller: 'scenes', app_appid: model.appid), icon: 'qrcode', title: t('.scenes.index.title'), position: 1 },
     { href: url_for(controller: 'menu_apps', app_appid: model.appid), icon: 'bars', title: t('.menu_apps.index.title'), position: 2 },
     { href: url_for(controller: 'responses', app_appid: model.appid), icon: 'reply-all', title: t('.responses.index.title'), position: 2 },
-    { href: url_for(controller: 'templates', app_appid: model.appid), icon: 'inbox', title: t('.templates.index.title') },
+    { href: url_for(controller: 'templates', app_appid: model.appid), icon: 'inbox', title: t('.templates.index.title'), position: 2 },
     param: { appid: model.appid }
   ) { yield }
 %>
