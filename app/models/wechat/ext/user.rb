@@ -4,6 +4,8 @@ module Wechat
     include Ext::Handle
 
     included do
+      has_one :wechat_user
+
       has_many :wechat_users, class_name: 'Wechat::WechatUser'
       has_many :program_users, class_name: 'Wechat::ProgramUser'
       has_many :corp_users, class_name: 'Wechat::CorpUser'
