@@ -33,7 +33,7 @@ module Wechat
         path = webview_path.start_with?('/') ? webview_path : "/#{webview_path}"
         URI::Generic.build(scheme: 'https', host: computed_webview_domain, path: path, query: options.to_query)
       else
-        Rails.application.routes.url_for(controller: 'home', host: computed_webview_domain, **options)
+        Rails.app.routes.url_for(controller: 'home', host: computed_webview_domain, **options)
       end
     end
 

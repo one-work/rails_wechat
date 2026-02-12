@@ -99,7 +99,7 @@ module Wechat
     end
 
     def url
-      Rails.application.routes.url_for(
+      Rails.app.routes.url_for(
         controller: 'wechat/apps',
         action: 'show',
         appid: self.appid,
@@ -114,7 +114,7 @@ module Wechat
     def oauth2_qrcode_url(**host_options)
       q = {
         appid: appid,
-        redirect_uri: Rails.application.routes.url_for(controller: 'wechat/apps', action: 'show', id: id, **host_options),
+        redirect_uri: Rails.app.routes.url_for(controller: 'wechat/apps', action: 'show', id: id, **host_options),
         scope: 'snsapi_login',
         response_type: 'code',
         state: SecureRandom.hex(16)

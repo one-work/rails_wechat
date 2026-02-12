@@ -121,7 +121,7 @@ module Wechat
         user: user,
         code: 'code',
         title: '手机验证码已下发，该验证码用于注册微信公众号',
-        link: Rails.application.routes.url_for(action: 'code', id: id, subdomain: organ_app&.subdomain),
+        link: Rails.app.routes.url_for(action: 'code', id: id, subdomain: organ_app&.subdomain),
         organ_id: organ_id
       )
     end

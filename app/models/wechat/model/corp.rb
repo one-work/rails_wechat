@@ -150,7 +150,7 @@ module Wechat
       {
         appid: corpid,
         agentid: agentid,
-        redirect_uri: ERB::Util.url_encode(Rails.application.routes.url_for(**url_options)),
+        redirect_uri: ERB::Util.url_encode(Rails.app.routes.url_for(**url_options)),
         state: Com::State.create(host: host, controller: '/me/home')
       }
     end
@@ -173,7 +173,7 @@ module Wechat
       url_options.with_defaults! controller: 'wechat/corps', action: 'login', id: id, host: organ.host
       h = {
         appid: corpid,
-        redirect_uri: ERB::Util.url_encode(Rails.application.routes.url_for(**url_options)),
+        redirect_uri: ERB::Util.url_encode(Rails.app.routes.url_for(**url_options)),
         response_type: 'code',
         scope: scope,
         state: state,

@@ -17,7 +17,7 @@ module Wechat
       )
       h = {
         appid: appid,
-        redirect_uri: Rails.application.routes.url_for(**url_options),
+        redirect_uri: Rails.app.routes.url_for(**url_options),
         response_type: 'code',
         scope: scope,
         state: state

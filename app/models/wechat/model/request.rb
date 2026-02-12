@@ -81,7 +81,7 @@ module Wechat
     end
 
     def reply_params_detail
-      url = Rails.application.routes.url_for(
+      url = Rails.app.routes.url_for(
         controller: 'home',
         action: 'index',
         host: app.domain
@@ -129,7 +129,7 @@ module Wechat
         url = scene_organ.redirect_url(auth_token: wechat_user.auth_token)
         desc = "#{scene_organ.name}欢迎您\n点击链接访问精心为您准备的内容"
       elsif wechat_user.persisted?
-        url = Rails.application.routes.url_for(
+        url = Rails.app.routes.url_for(
           controller: 'my/home',
           auth_token: wechat_user.auth_token
         )
@@ -154,7 +154,7 @@ module Wechat
           session_id = body.delete_prefix('session_')
           SessionLoginChannel.broadcast_to(
             session_id,
-            url: Rails.application.routes.url_for(controller: 'home', auth_token: wechat_user.auth_token)
+            url: Rails.app.routes.url_for(controller: 'home', auth_token: wechat_user.auth_token)
           )
         end
         build_text_reply(value: '登录成功！')

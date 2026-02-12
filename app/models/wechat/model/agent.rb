@@ -20,7 +20,7 @@ module Wechat
     end
 
     def url
-      Rails.application.routes.url_for(controller: 'wechat/agents', action: 'create', id: self.id, host: domain) if domain.present?
+      Rails.app.routes.url_for(controller: 'wechat/agents', action: 'create', id: self.id, host: domain) if domain.present?
     end
 
     def js_login(**url_options)
@@ -28,7 +28,7 @@ module Wechat
       {
         appid: corpid,
         agentid: agentid,
-        redirect_uri: ERB::Util.url_encode(Rails.application.routes.url_for(**url_options)),
+        redirect_uri: ERB::Util.url_encode(Rails.app.routes.url_for(**url_options)),
         state: Com::State.create(host: domain, controller_path: '/me/home').id
       }
     end
@@ -37,7 +37,7 @@ module Wechat
       url_options.with_defaults! controller: 'wechat/agents', action: 'login', id: id, host: self.domain.presence || organ.host
       h = {
         appid: corpid,
-        redirect_uri: Rails.application.routes.url_for(**url_options),
+        redirect_uri: Rails.app.routes.url_for(**url_options),
         response_type: 'code',
         scope: scope,
         state: state,
