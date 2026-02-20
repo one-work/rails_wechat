@@ -1,0 +1,15 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(action: 'apps', id: model.id),
+      icon: 'shapes',
+      title: t('.apps.title')
+    },
+    {
+      href: url_for(controller: 'template_key_words', template_config_id: model.id),
+      icon: 'gears',
+      title: t('.template_key_words.index.title')
+    }
+  ) { yield }
+%>

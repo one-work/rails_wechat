@@ -1,0 +1,10 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'notices', template_id: model.id),
+      icon: 'inbox',
+      title: t('.notices.index.title')
+    }
+  ) { yield }
+%>
