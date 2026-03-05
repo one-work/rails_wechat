@@ -1,0 +1,10 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'extractors', response_id: model.id),
+      icon: 'expand-alt',
+      title: t('.extractors.index.title')
+    }
+  ) { yield }
+%>
