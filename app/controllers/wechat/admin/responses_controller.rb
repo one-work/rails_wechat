@@ -26,7 +26,7 @@ module Wechat
       }
       q_params.merge! type: @response.reply.type if @response.reply
 
-      @replies = Reply.where(q_params).page(params[:page])
+      @replies = Reply.template.where(q_params).page(params[:page])
     end
 
     def update_reply

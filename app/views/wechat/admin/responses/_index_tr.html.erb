@@ -3,8 +3,13 @@
     model,
     {
       href: url_for(controller: 'extractors', response_id: model.id),
-      icon: 'expand-alt',
+      icon: 'expand',
       title: t('.extractors.index.title')
+    },
+    {
+      href: url_for(action: 'edit_reply', id: model.id),
+      icon: 'pencil',
+      title: t('.edit_reply.title')
     }
   ) { yield }
 %>
