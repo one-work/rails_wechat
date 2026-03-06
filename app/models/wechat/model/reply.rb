@@ -20,6 +20,8 @@ module Wechat
       belongs_to :request, optional: true
       belongs_to :message_send, optional: true
 
+      scope :template, -> { where(request_id: nil) }
+
       has_one_attached :media
     end
 
