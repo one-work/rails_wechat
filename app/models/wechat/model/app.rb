@@ -33,6 +33,7 @@ module Wechat
       attribute :version_info, :json, default: {}
       attribute :logo_media_id, :string
       attribute :enabled, :boolean, default: true
+      attribute :oauth_enable, :boolean, default: false
       attribute :global, :boolean, default: false
       attribute :secret, :string
       attribute :token, :string
@@ -182,10 +183,6 @@ module Wechat
     def template_ids(notifiable_type, *code)
       ids = TemplateConfig.where(notifiable_type: notifiable_type, code: code).pluck(:id)
       templates.where(template_config_id: ids).pluck(:template_id)
-    end
-
-    def oauth_enable
-      false
     end
 
     def name

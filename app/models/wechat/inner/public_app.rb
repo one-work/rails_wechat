@@ -4,8 +4,8 @@ module Wechat
   module Inner::PublicApp
     extend ActiveSupport::Concern
 
-    def oauth_enable
-      true
+    included do
+      attribute :oauth_enable, :boolean, default: true
     end
 
     def domain
