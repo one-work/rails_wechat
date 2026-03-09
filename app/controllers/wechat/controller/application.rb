@@ -25,7 +25,7 @@ module Wechat
         check_jwt_token if params[:auth_jwt_token]
         return if current_user && Current.session&.oauth_user
         render 'require_program_login', layout: 'raw', locals: { state: state_enter(destroyable: false).id }, status: :unauthorized and return
-      elsif request.variant.include?(:wechat) && app
+      elsif request.variant.include?(:wechat) && app&.oauth_enable
         return if current_user && Current.session.oauth_user
 
         if app.respond_to?(:oauth2_url)
