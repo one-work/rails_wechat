@@ -109,7 +109,7 @@ module Wechat
     end
 
     def openable?
-      platform || secret.present?
+      (platform || secret.present?) && oauth_enable
     end
 
     def oauth2_qrcode_url(**host_options)
