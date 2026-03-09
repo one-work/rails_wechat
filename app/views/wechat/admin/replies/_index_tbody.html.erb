@@ -3,10 +3,10 @@
   <% if model.is_a?(Wechat::NewsReply) %>
     <% model.news_reply_items.each do |item| %>
       <article class="media">
-        <div class="media-content">
+        <div class="media-content max-fullwidth">
           <p><%= item.title %></p>
           <p><%= item.description %></p>
-          <p><%= item.url %></p>
+          <p class="truncate"><%= item.url %></p>
         </div>
         <div class="media-right">
           <%= image_tag item.pic_url, class: 'image is-64x64' if item.pic_url.present? %>
@@ -17,9 +17,10 @@
       </article>
     <% end %>
     <article class="media">
-      <div class="content">
-        <%= link_to({ action: 'add', id: model.id }, data: { turbo_frame: 'modal' }) do %>
-          <%= svg_tag 'plus' %><span><%= t('.add') %></span>
+      <div class="media-content">
+        <%= button_to({ action: 'add', id: model.id }) do %>
+          <%= svg_tag 'plus' %>
+          <span><%= t('.add') %></span>
         <% end %>
       </div>
     </article>

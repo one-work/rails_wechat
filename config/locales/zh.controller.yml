@@ -63,6 +63,8 @@ zh:
       responses:
         index:
           title: 回复设置
+        edit_reply:
+          title: 设置回复
       replies:
         index:
           title: 回复内容

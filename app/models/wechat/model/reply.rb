@@ -11,14 +11,16 @@ module Wechat
       attribute :body, :json
       attribute :appid, :string, index: true
       attribute :open_id, :string
-      attribute :nonce, :string, default: SecureRandom.hex(10)
-      attribute :created_at, :datetime, default: Time.current
+      attribute :nonce, :string, default: -> { SecureRandom.hex(10) }
+      attribute :created_at, :datetime, default: -> { Time.current }
 
       belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
       belongs_to :platform, optional: true
       belongs_to :messaging, polymorphic: true, optional: true
       belongs_to :request, optional: true
       belongs_to :message_send, optional: true
+
+      scope :template, -> { where(open_id: nil) }
 
       has_one_attached :media
     end
