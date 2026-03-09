@@ -3,19 +3,15 @@ module Wechat
     extend ActiveSupport::Concern
 
     included do
-      has_one :scene, ->(o) { where(appid: o.appid) }, as: :handle, class_name: 'Wechat::Scene'
-
+      has_many :scenes, as: :handle, class_name: 'Wechat::Scene'
     end
 
-
-    def to_scene!
-      return unless respond_to?(:appid) && appid
-      scene || build_scene
+    def to_scene!(appid)
+      scene = scenes.find_or_initialize_by(appid: appid)
       scene.refresh if scene.expired?
       scene.save
       scene
     end
-
 
   end
 end
