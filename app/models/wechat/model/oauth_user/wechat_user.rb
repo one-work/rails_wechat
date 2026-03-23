@@ -96,9 +96,16 @@ module Wechat
       logger.info e.message
     end
 
-    def sync_user_info
+    def sync_user_info(limit = 0)
+      return if limit > 3
       res = api.userinfo(uid)
       logger.debug "\e[35m  Sync User Info: #{res}  \e[0m"
+
+      if res.blank?
+        limit += 1
+        sync_user_info_later(limit)
+        return
+      end
 
       if res['errcode'].present?
         self.errors.add :base, "#{res['errcode']}, #{res['errmsg']}"
@@ -110,8 +117,8 @@ module Wechat
       self
     end
 
-    def sync_user_info_later
-      UserInfoJob.perform_later(self)
+    def sync_user_info_later(limit = 0)
+      UserInfoJob.perform_later(self, limit)
     end
 
     def refresh_access_token
