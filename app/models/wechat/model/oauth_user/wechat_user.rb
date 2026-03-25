@@ -72,7 +72,7 @@ module Wechat
 
         SessionLoginChannel.broadcast_to(
           state.session_id,
-          url: state.url(auth_token: auth_token)
+          url: state.url(once_token: auth_token)
         )
       end
     end
