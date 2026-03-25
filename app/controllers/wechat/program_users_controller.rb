@@ -20,12 +20,12 @@ module Wechat
         if state
           state.destroyable = true
           state.save
-          @result.merge! url: state.url(auth_token: @program_user.auth_token)
+          @result.merge! url: state.url(auth_token: @result[:auth_token])
         elsif @app.respond_to? :webview_url
           @result.merge! url: @app.webview_url(auth_jwt_token: @program_user.auth_jwt_token)
         end
       elsif @app.respond_to? :webview_url
-        @result.merge! url: @app.webview_url(auth_token: @program_user.auth_token)
+        @result.merge! url: @app.webview_url(auth_token: @result[:auth_token])
       end
       Rails.logger.debug "--------#{@result}"
     end
