@@ -1,3 +1,20 @@
-<tr id="tr_<%= model.id %>" data-controller="show">
-  <%= yield %>
-</tr>
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'payee_apps', partner_payee_id: model.id),
+      icon: 'cash-register',
+      title: t('.payee_apps.index.title')
+    },
+    {
+      href: url_for(controller: 'payee_domains', partner_payee_id: model.id),
+      icon: 'globe',
+      title: t('.payee_domains.index.title')
+    },
+    {
+      action: url_for(action: 'organ', id: model.id),
+      icon: 'building',
+      title: t('.organ.title')
+    }
+  ) { yield }
+%>

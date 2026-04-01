@@ -219,6 +219,8 @@ zh:
       partners:
         index:
           title: 微信支付服务商
+        edit_cert:
+          title: 证书设置
       partner_payees:
         index:
           title: 签约商户
