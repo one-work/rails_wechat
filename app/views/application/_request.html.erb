@@ -9,7 +9,7 @@
   <div class="media-content">
     <h4 class="weui-media-box__title">
       <span><%= request.wechat_user.name %></span>
-      <span class="weui-badge"><%= request.type_i18n %></span>
+      <span class="tag is-badge"><%= request.type_i18n %></span>
       <% if request.created_at <= request.wechat_user.created_at %>
         <span class="tag is-success">邀请成功</span>
       <% end %>
