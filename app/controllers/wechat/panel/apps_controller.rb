@@ -40,6 +40,7 @@ module Wechat
         :platform_appid,
         :debug,
         :global,
+        :oauth_enable,
         :service_url,
         :service_corp
       )
