@@ -186,6 +186,8 @@ zh:
       menu_apps:
         index:
           title: 公众号菜单
+        sync:
+          title: 同步至微信
       menu_roots:
         new:
           title: 新增基础菜单

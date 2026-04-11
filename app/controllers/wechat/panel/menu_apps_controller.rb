@@ -14,7 +14,7 @@ module Wechat
 
     def sync
       r = @app.sync_menu
-      render 'sync', locals: { notice: r.to_s }
+      render 'alert_message', locals: { message: r.to_s }
     end
 
     private
