@@ -11,7 +11,6 @@
 <td>
   <span class="text-grey"><%= model.position %></span>
 </td>
-<td></td>
 <td>
   <% if menu_disable %>
     <%= button_to({ controller: 'menu_disables', action: 'destroy', menu_id: model.id, id: menu_disable.id }, method: :delete, aria: { label: '添加' }, class: 'button is-small is-borderless') do %>
