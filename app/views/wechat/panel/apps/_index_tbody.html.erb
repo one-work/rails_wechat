@@ -20,4 +20,5 @@
   <%= form_with theme: 'switch', model: model, scope: :app, url: { action: 'update', id: model.id }, data: { controller: 'input' }, class: 'mt-2' do |f| %>
     <%= f.check_box :oauth_enable, data: { action: 'input#submit' }, id: nil %>
   <% end %>
+  <p class="text-grey"><%= model.oauth_domain %></p>
 </td>
