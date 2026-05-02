@@ -1,7 +1,7 @@
 <tr id="root_<%= position %>" data-depth="10" data-controller="tree show" data-tree-target="item" class="<%= 'background-white-ter' %>">
   <%= yield %>
 </tr>
-<% model.app_menus(@app.appid).each do |menu| %>
+<% model.app_menus(@app).each do |menu| %>
   <%= render partial: 'menu_tbody', layout: 'menu_tr', locals: { model: menu } %>
 <% end if model.is_a?(Wechat::MenuRoot) %>
 <% model.menu_apps.where(appid: @app.appid, menu_id: nil).each do |menu_app| %>

@@ -12,12 +12,12 @@ module Wechat
       validates :position, inclusion: [1, 2, 3]
     end
 
-    def app_menus(appid)
-      disabled_ids = menu_disables.where(appid: appid).map(&:menu_id)
+    def app_menus(app)
+      disabled_ids = app.menu_disables.where(appid: app.appid).map(&:menu_id)
 
       r = []
       r.concat menus.each { |i| i.final_position = i.position * 10; i.disabled = disabled_ids.include?(i.id) }
-      r.concat menu_apps.where(appid: appid).each { |i| i.final_position = i.menu_position * 10 + i.position }
+      r.concat app.menu_apps.each { |i| i.final_position = i.menu_position * 10 + i.position }
       r
     end
 
