@@ -21,6 +21,10 @@
       <%= svg_tag 'pencil' %>
       <span><%= t('.menu_root_apps.edit.title') %></span>
     <% end %>
+    <%= button_to({ controller: 'menu_root_apps', action: 'destroy', id: model.id }, method: :delete, class: 'button is-small is-outlined is-danger') do %>
+      <%= svg_tag 'trash' %>
+      <span><%= t('.menu_root_apps.destroy.title') %></span>
+    <% end %>
   <% else %>
     <%= button_to({ controller: 'menu_root_apps', action: 'new' }, params: { 'menu_root_app[position]': position }, class: 'button is-small is-outlined is-link') do %>
       <%= svg_tag 'plus' %>
