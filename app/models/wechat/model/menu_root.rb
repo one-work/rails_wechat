@@ -12,7 +12,7 @@ module Wechat
       validates :position, inclusion: [1, 2, 3]
     end
 
-    def app_menus(appid)
+    def app_menus
       r = menus.to_a
       menu_apps.includes(:menu).where(appid: appid).order(position: :desc).each do |menu_app|
         if menu_app.menu

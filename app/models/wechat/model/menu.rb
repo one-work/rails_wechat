@@ -15,7 +15,7 @@ module Wechat
       attribute :root_position, :integer
       attribute :position, :integer
 
-      positioned on: [:menu_root_id]
+      positioned on: [:root_position]
 
       #after_save_commit :sync_to_wechat, if: -> { (saved_changes.keys & ['name', 'value', 'mp_appid', 'mp_pagepath']).present? }
     end
