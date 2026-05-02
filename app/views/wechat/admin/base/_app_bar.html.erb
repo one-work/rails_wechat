@@ -22,6 +22,9 @@
     <li class="<%= active_helper(controllers: 'wechat_users', active: 'is-active') %>">
       <%= link_to t('.wechat_users.index.title'), { controller: 'wechat_users', app_appid: @app.appid } %>
     </li>
+    <li class="<%= active_helper(controllers: 'menu_apps', active: 'is-active') %>">
+      <%= link_to t('.menu_apps.index.title'), { controller: 'menu_apps', app_appid: @app.appid } %>
+    </li>
     <li class="<%= active_helper(controllers: 'user_tags', active: 'is-active') %>">
       <%= link_to t('.user_tags.index.title'), { controller: 'user_tags', app_appid: @app.appid } %>
     </li>
