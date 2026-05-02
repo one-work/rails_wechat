@@ -12,7 +12,7 @@ module Wechat
     def menu_root_app_params
       params.fetch(:menu_root_app, {}).permit(
         :name,
-        :menu_root_id
+        :position
       )
     end
 

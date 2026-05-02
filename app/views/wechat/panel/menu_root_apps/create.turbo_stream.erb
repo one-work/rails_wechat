@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "root_#{@menu_root_app.position}", partial: 'index_tbody', layout: 'index_tr', locals: { model: @menu_root_app } %>
+<%= turbo_stream.remove 'modal' %>

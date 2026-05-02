@@ -1,15 +1,31 @@
-<td><strong><%= model.name %></strong></td>
+<td><strong class="text-success"><%= position %></strong></td>
+<td>
+  <% if model.is_a? Wechat::MenuRoot %>
+    <strong><%= model.name %></strong>
+    <span class="tag">默认</span>
+  <% elsif model.is_a? Wechat::MenuRootApp %>
+    <strong><%= model.name %></strong>
+    <span class="tag">自定义</span>
+  <% end %>
+</td>
 <td></td>
-<td><strong class="text-success"><%= model.position %></strong></td>
 <td>
   <div data-show-target="item" class="visibility-hidden">
-    <%= button_to({ controller: 'menu_root_apps', action: 'new', menu_root_id: model.id }, class: 'button is-small is-link') do %>
+  <% if model.nil? %>
+    <%= button_to({ controller: 'menu_root_apps', action: 'new' }, params: { 'menu_root_app[position]': position }, class: 'button is-small is-outlined is-link') do %>
       <%= svg_tag 'plus' %>
-      <span><%= t('.new.title') %></span>
+      <span><%= t('.menu_root_apps.new.title') %></span>
     <% end %>
-    <%= button_to({ action: 'new', menu_root_id: model.id }, class: 'button is-small is-success') do %>
+  <% elsif model.is_a?(Wechat::MenuRootApp) %>
+    <%= button_to({ controller: 'menu_root_apps', action: 'edit', id: model.id }, class: 'button is-small is-outlined is-link') do %>
+      <%= svg_tag 'pencil' %>
+      <span><%= t('.menu_root_apps.edit.title') %></span>
+    <% end %>
+  <% else %>
+    <%= button_to({ controller: 'menu_root_apps', action: 'new' }, params: { 'menu_root_app[position]': position }, class: 'button is-small is-outlined is-link') do %>
       <%= svg_tag 'plus' %>
-      <span><%= t('.new.title') %></span>
+      <span><%= t('.menu_root_apps.new.title') %></span>
     <% end %>
+  <% end %>
   </div>
 </td>

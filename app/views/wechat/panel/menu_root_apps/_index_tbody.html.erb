@@ -1,2 +1,14 @@
-<td><%= model.name %></td>
-<td><%= model.position %></td>
+<td><strong class="text-success"><%= model.position %></strong></td>
+<td>
+  <strong><%= model.name %></strong>
+  <span class="tag">自定义</span>
+</td>
+<td></td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ controller: 'menu_root_apps', action: 'edit', id: model.id }, class: 'button is-small is-outlined is-link') do %>
+      <%= svg_tag 'pencil' %>
+      <span><%= t('.menu_root_apps.edit.title') %></span>
+    <% end %>
+  </div>
+</td>

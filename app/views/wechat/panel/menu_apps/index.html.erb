@@ -2,6 +2,7 @@
 <%= render 'index_actions' %>
 
 <%= render layout: 'index_table' do %>
-  <%= render 'root_raw_tr' %>
-  <%= render partial: 'root_tbody', layout: 'root_tr', collection: @menu_roots, as: :model %>
+  <% @menu_roots.each do |position, arr| %>
+    <%= render partial: 'root_tbody', layout: 'root_tr', locals: { position: position, model: arr[0] } %>
+  <% end %>
 <% end %>
