@@ -3,6 +3,8 @@ module Wechat
     extend ActiveSupport::Concern
 
     included do
+      attr_accessor :final_position
+
       attribute :name, :string
       attribute :position, :integer
 
@@ -12,15 +14,10 @@ module Wechat
       validates :position, inclusion: [1, 2, 3]
     end
 
-    def app_menus
-      r = menus.to_a
-      menu_apps.includes(:menu).where(appid: appid).order(position: :desc).each do |menu_app|
-        if menu_app.menu
-          r.insert r.index(menu_app.menu) + 1, menu_app
-        else
-          r.insert -(r.size + 1), menu_app
-        end
-      end
+    def app_menus(appid)
+      r = []
+      r.concat menus.each { |i| i.final_position = i.position * 10 }
+      r.concat menu_apps.where(appid: appid).each { |i| i.final_position = i.menu_position * 10 + i.position }
       r
     end
 

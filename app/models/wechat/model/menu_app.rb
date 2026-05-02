@@ -4,8 +4,11 @@ module Wechat
     include Inner::Menu
 
     included do
+      attr_accessor :final_position
+
       attribute :appid, :string, index: true
       attribute :root_position, :integer
+      attribute :menu_position, :integer
       attribute :position, :integer
 
       belongs_to :menu_root, optional: true
@@ -15,7 +18,7 @@ module Wechat
       belongs_to :scene, optional: true
       belongs_to :tag, optional: true
 
-      positioned on: [:menu_id, :menu_root_id, :appid]
+      positioned on: [:root_position, :menu_position, :appid]
 
       before_validation :sync_menu_root, if: -> { menu_id_changed? }
     end
