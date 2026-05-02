@@ -15,10 +15,6 @@ module Wechat
       attribute :root_position, :integer
       attribute :position, :integer
 
-      has_many :menu_apps, dependent: :destroy_async
-      has_many :apps, through: :menu_apps
-      has_many :scenes, through: :menu_apps
-
       positioned on: [:menu_root_id]
 
       #after_save_commit :sync_to_wechat, if: -> { (saved_changes.keys & ['name', 'value', 'mp_appid', 'mp_pagepath']).present? }
