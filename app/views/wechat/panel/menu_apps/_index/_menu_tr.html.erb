@@ -3,4 +3,4 @@
 </tr>
 <% model.menu_apps.where(appid: @app.appid).each do |menu_app| %>
   <%= render partial: 'menu_app_tbody', layout: 'menu_app_tr', locals: { model: menu_app } %>
-<% end %>
+<% end if false %>
