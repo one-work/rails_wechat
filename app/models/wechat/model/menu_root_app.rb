@@ -7,13 +7,12 @@ module Wechat
       attribute :appid, :string
       attribute :position, :integer
 
-      belongs_to :menu_root, optional: true
       belongs_to :app, foreign_key: :appid, primary_key: :appid
 
       has_many :menus, -> { order(position: :asc) }, primary_key: :menu_root_id, foreign_key: :menu_root_id
       has_many :menu_apps, -> { order(position: :asc) }
 
-      positioned on: [:menu_root_id, :appid]
+      validates :position, inclusion: [1, 2, 3]
     end
 
     def app_menus(_)
