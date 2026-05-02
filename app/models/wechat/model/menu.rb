@@ -12,6 +12,9 @@ module Wechat
     }.freeze
 
     included do
+      attr_accessor :final_position
+      attr_accessor :disabled
+
       attribute :root_position, :integer
       attribute :position, :integer
 

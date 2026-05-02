@@ -3,8 +3,6 @@ module Wechat
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor :final_position
-
       attribute :name, :string
       attribute :position, :integer
 
@@ -15,8 +13,10 @@ module Wechat
     end
 
     def app_menus(appid)
+      disabled_ids = menu_disables.where(appid: appid).map(&:menu_id)
+
       r = []
-      r.concat menus.each { |i| i.final_position = i.position * 10 }
+      r.concat menus.each { |i| i.final_position = i.position * 10; i.disabled = disabled_ids.include?(i.id) }
       r.concat menu_apps.where(appid: appid).each { |i| i.final_position = i.menu_position * 10 + i.position }
       r
     end
