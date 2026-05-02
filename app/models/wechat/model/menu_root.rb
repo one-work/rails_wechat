@@ -6,9 +6,8 @@ module Wechat
       attribute :name, :string
       attribute :position, :integer
 
-      has_many :menus, -> { order(position: :asc) }
-      has_many :menu_root_apps, -> { order(position: :asc) }
-      has_many :menu_apps, -> { order(position: :asc) }
+      has_many :menus, -> { order(position: :asc) }, primary_key: :position, foreign_key: :root_position
+      has_many :menu_apps, -> { order(position: :asc) }, primary_key: :position, foreign_key: :root_position
 
       validates :position, inclusion: [1, 2, 3]
     end

@@ -12,9 +12,8 @@ module Wechat
     }.freeze
 
     included do
+      attribute :root_position, :integer
       attribute :position, :integer
-
-      belongs_to :menu_root
 
       has_many :menu_apps, dependent: :destroy_async
       has_many :apps, through: :menu_apps
