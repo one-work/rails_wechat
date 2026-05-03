@@ -8,11 +8,7 @@ module Wechat
       q_params = {}
       q_params.merge! params.permit(:name)
 
-      menu_roots = MenuRoot.all.group_by(&:position)
-      menu_root_apps = @app.menu_root_apps.group_by(&:position)
-      @menu_roots = [1, 2, 3].each_with_object({}) do |position, h|
-        h.merge! position => menu_root_apps.fetch(position, []) + menu_roots.fetch(position, [])
-      end
+      @menu_roots = @app.menu_roots
     end
 
     def sync

@@ -23,24 +23,17 @@ module Wechat
     end
 
     def menu_roots
-      r = MenuRoot.includes(:menus).order(position: :asc).to_a
-      menu_root_apps.includes(:menu_root).order(position: :desc).each do |menu_root_app|
-        if menu_root_app.menu_root
-          r.insert r.index(menu_root_app.menu_root) + 1, menu_root_app
-        else
-          r.insert -(r.size + 1), menu_root_app
-        end
+      menu_roots = MenuRoot.includes(:menus).all.group_by(&:position)
+      menu_root_apps = menu_root_apps.group_by(&:position)
+      [1, 2, 3].each_with_object({}) do |position, h|
+        h.merge! position => menu_root_apps.fetch(position, []) + menu_roots.fetch(position, [])
       end
-      r
     end
 
     def menu
       r = menu_roots.map do |menu_root|
-        if menu_root.is_a?(MenuRoot)
-          _subs = menu_root.app_menus(appid).delete_if { |i| i.is_a?(Menu) && menu_disables.pluck(:menu_id).include?(i.id) }
-        else
-          _subs = menu_root.menu_apps
-        end
+        _subs = menu_root.app_menus(self).delete_if { |i| i.disabled_id.present? }
+
 
         subs = _subs[0..4].as_json(host: domain.split(':')[0])
         if subs.size <= 1
