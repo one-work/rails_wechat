@@ -1,8 +1,6 @@
-<%= f.hidden_field :menu_id %>
-<%= f.hidden_field :menu_root_id %>
+<%= f.hidden_field :menu_position %>
 <%= f.select :type, options_for_select(Wechat::MenuApp.options_i18n(:type), @menu_app.type) %>
 <%= f.text_field :name, required: true %>
 <%= f.text_field :value, required: true %>
 <%= f.text_field :mp_appid %>
 <%= f.text_field :mp_pagepath %>
-<%= f.number_field :position, step: 1 %>
