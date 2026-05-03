@@ -19,12 +19,6 @@ module Wechat
       belongs_to :tag, optional: true
 
       positioned on: [:root_position, :menu_position, :appid]
-
-      before_validation :sync_menu_root, if: -> { menu_id_changed? }
-    end
-
-    def sync_menu_root
-      self.menu_root_id = menu&.menu_root_id
     end
 
     def xx
