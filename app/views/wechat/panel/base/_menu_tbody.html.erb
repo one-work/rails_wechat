@@ -43,5 +43,14 @@
       <%= svg_tag 'plus' %>
       <span>在此菜单之后添加</span>
     <% end %>
+  <% elsif model.is_a?(Wechat::MenuApp) %>
+    <%= button_to({ controller: 'menu_apps', action: 'edit', id: model.id }, class: 'button is-rounded is-small is-info') do %>
+      <%= svg_tag 'pencil' %>
+      <span>编辑此菜单</span>
+    <% end %>
+    <%= button_to({ controller: 'menu_apps', action: 'destroy', id: model.id }, method: :delete, data: { confirm: '确定要删除吗？' }, class: 'button is-rounded is-small') do %>
+      <%= svg_tag 'trash' %>
+      <span>删除此菜单</span>
+    <% end %>
   <% end %>
 </td>
