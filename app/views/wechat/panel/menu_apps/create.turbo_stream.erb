@@ -1,0 +1,2 @@
+<%= turbo_stream.after "menu_#{@menu.position}", partial: 'menu_tbody', layout: 'menu_tr', locals: { model: @menu_app } %>
+<%= turbo_stream.remove 'modal' %>

@@ -1,6 +1,9 @@
-<tr id="tr_<%= model.id %>" data-depth="0" data-controller="tree show" data-tree-target="item" class="<%= 'background-white-ter' %>">
+<tr
+  id="menu_<%= model.position %>"
+  data-depth="0"
+  data-controller="tree show"
+  data-tree-target="item"
+  class="<%= 'background-white-ter' %>"
+>
   <%= yield %>
 </tr>
-<% model.menu_apps.where(appid: @app.appid).each do |menu_app| %>
-  <%= render partial: 'menu_app_tbody', layout: 'menu_app_tr', locals: { model: menu_app } %>
-<% end if false %>
