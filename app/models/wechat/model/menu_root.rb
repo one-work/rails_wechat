@@ -18,6 +18,7 @@ module Wechat
       r = []
       r.concat menus.each { |i| i.final_position = i.position * 10; i.disabled_id = disabled_ids[i.id] }
       r.concat app.menu_apps.each { |i| i.final_position = i.menu_position * 10 + i.position }
+      r.sort_by!(&:final_position)
       r
     end
 
