@@ -2,7 +2,7 @@ module Wechat
   module Inner::Menu::ViewMenu
     extend ActiveSupport::Concern
 
-    def as_json(**options)
+    def as_json(options= {})
       if value.to_s.start_with?('/', 'http')
         r = URI(value)
       else
