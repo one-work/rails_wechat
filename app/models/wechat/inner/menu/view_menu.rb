@@ -2,14 +2,14 @@ module Wechat
   module Inner::Menu::ViewMenu
     extend ActiveSupport::Concern
 
-    def as_json(options = {})
+    def as_json(**options)
       if value.to_s.start_with?('/', 'http')
         r = URI(value)
       else
         r = URI("/#{value}")
       end
       r.host ||= options[:host]
-      r.scheme = Rails.application.routes.default_url_options[:protocol].presence || 'https'
+      r.scheme = Rails.app.routes.default_url_options[:protocol].presence || 'https'
       r.to_s
 
       {

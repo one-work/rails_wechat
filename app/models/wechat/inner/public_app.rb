@@ -35,7 +35,7 @@ module Wechat
         menu_root = menu_roots[0]
         if menu_root
           _subs = menu_root.app_menus(self).delete_if { |i| i.disabled_id.present? }
-          subs = _subs[0..4].as_json(host: domain.split(':')[0])
+          subs = _subs[0..4].as_json(host: domain)
           if subs.size <= 1
             subs[0]
           else
