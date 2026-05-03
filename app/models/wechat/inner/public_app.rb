@@ -23,27 +23,26 @@ module Wechat
     end
 
     def menu_roots
-      menu_roots = MenuRoot.includes(:menus).all.group_by(&:position)
-      menu_root_apps = menu_root_apps.group_by(&:position)
+      roots = MenuRoot.includes(:menus).all.group_by(&:position)
+      root_apps = menu_root_apps.group_by(&:position)
       [1, 2, 3].each_with_object({}) do |position, h|
-        h.merge! position => menu_root_apps.fetch(position, []) + menu_roots.fetch(position, [])
+        h.merge! position => root_apps.fetch(position, []) + roots.fetch(position, [])
       end
     end
 
     def menu
-      r = menu_roots.map do |menu_root|
-        _subs = menu_root.app_menus(self).delete_if { |i| i.disabled_id.present? }
-
-
-        subs = _subs[0..4].as_json(host: domain.split(':')[0])
-        if subs.size <= 1
-          subs[0]
-        else
-          { name: menu_root.name, sub_button: subs }
+      menu_roots.map do |position, menu_roots|
+        menu_root = menu_roots[0]
+        if menu_root
+          _subs = menu_root.app_menus(self).delete_if { |i| i.disabled_id.present? }
+          subs = _subs[0..4].as_json(host: domain.split(':')[0])
+          if subs.size <= 1
+            subs[0]
+          else
+            { name: menu_root.name, sub_button: subs }
+          end
         end
       end.compact
-
-      { button: r[0..2] }
     end
 
     def js_config(url = '/')
