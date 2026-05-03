@@ -36,6 +36,7 @@ module Wechat
     def menu_params
       params.fetch(:menu_app, {}).permit(
         :menu_position,
+        :root_position,
         :type,
         :name,
         :value,

@@ -11,8 +11,6 @@ module Wechat
       attribute :menu_position, :integer
       attribute :position, :integer
 
-      belongs_to :menu_root, optional: true
-      belongs_to :menu_root_app, optional: true
       belongs_to :app, foreign_key: :appid, primary_key: :appid
 
       belongs_to :scene, optional: true
