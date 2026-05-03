@@ -11,7 +11,7 @@ class Wechat::PublicApi
     end
 
     def menu_create(menu)
-      post 'menu/create', **menu, origin: BASE
+      post 'menu/create', button: menu, origin: BASE
     end
 
     def menu_addconditional(menu)
