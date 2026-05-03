@@ -12,7 +12,6 @@ module Wechat
     }.freeze
 
     included do
-      attr_accessor :final_position
       attr_accessor :disabled_id
 
       attribute :root_position, :integer
@@ -21,6 +20,10 @@ module Wechat
       positioned on: [:root_position]
 
       #after_save_commit :sync_to_wechat, if: -> { (saved_changes.keys & ['name', 'value', 'mp_appid', 'mp_pagepath']).present? }
+    end
+
+    def final_position
+      position * 10
     end
 
     def sync_to_wechat

@@ -16,8 +16,8 @@ module Wechat
       disabled_ids = app.menu_disables.where(appid: app.appid).pluck(:menu_id, :id).to_h
 
       r = []
-      r.concat menus.each { |i| i.final_position = i.position * 10; i.disabled_id = disabled_ids[i.id] }
-      r.concat app.menu_apps.each { |i| i.final_position = i.menu_position * 10 + i.position }
+      r.concat menus.each { |i| i.disabled_id = disabled_ids[i.id] }
+      r.concat app.menu_apps
       r.sort_by!(&:final_position)
       r
     end

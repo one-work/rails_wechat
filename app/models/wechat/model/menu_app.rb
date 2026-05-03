@@ -4,8 +4,6 @@ module Wechat
     include Inner::Menu
 
     included do
-      attr_accessor :final_position
-
       attribute :appid, :string, index: true
       attribute :root_position, :integer
       attribute :menu_position, :integer
@@ -17,6 +15,10 @@ module Wechat
       belongs_to :tag, optional: true
 
       positioned on: [:root_position, :menu_position, :appid]
+    end
+
+    def final_position
+      menu_position * 10 + position
     end
 
     def xx
