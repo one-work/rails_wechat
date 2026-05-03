@@ -13,7 +13,7 @@ module Wechat
 
     included do
       attr_accessor :final_position
-      attr_accessor :disabled
+      attr_accessor :disabled_id
 
       attribute :root_position, :integer
       attribute :position, :integer

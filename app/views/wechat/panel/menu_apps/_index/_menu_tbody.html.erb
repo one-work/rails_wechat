@@ -1,8 +1,7 @@
 <td>
-  <span class="text-grey"><%= model.position %></span>
+  <span class="text-grey display-inline-block pl-4"><%= model.position %></span>
 </td>
 <td>
-  <span style="width: 1em; display: inline-block"></span>
   <span><%= model.name %></span>
   <span class="tag"><%= model.type_i18n %></span>
 </td>
@@ -13,18 +12,24 @@
 </td>
 <td>
   <% if model.is_a?(Wechat::Menu) %>
-    <% if model.disabled %>
-      <%= button_to({ controller: 'menu_disables', action: 'destroy', menu_id: model.id, id: menu_disable.id }, method: :delete, aria: { label: '添加' }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
+    <% if model.disabled_id %>
+      <%= button_to({ controller: 'menu_disables', action: 'destroy', menu_id: model.id, id: model.disabled_id }, method: :delete, class: 'button is-rounded is-small') do %>
+        <%= svg_tag 'rotate-left', class: 'icon is-small text-success' %>
+        <span>恢复此菜单</span>
       <% end %>
     <% else %>
-      <%= button_to({ controller: 'menu_disables', action: 'create', menu_id: model.id }, aria: { label: t('.destroy.title') }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'check', class: 'icon is-small text-success' %>
+      <%= button_to({ controller: 'menu_disables', action: 'create', menu_id: model.id }, class: 'button is-rounded is-small') do %>
+        <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
+        <span>禁用此菜单</span>
       <% end %>
     <% end %>
-    <%= button_to({ controller: 'menu_apps', action: 'new', menu_id: model.id }, params: { 'menu_app[menu_position]': model.position }, class: 'button is-small is-link') do %>
+    <%= button_to({ controller: 'menu_apps', action: 'new', menu_id: model.id }, params: { 'menu_app[menu_position]': model.position - 1 }, class: 'button is-rounded is-small is-link') do %>
       <%= svg_tag 'plus' %>
-      <span class="ml-1"><%= t('.new.title') %></span>
+      <span>在此菜单之前添加</span>
+    <% end %>
+    <%= button_to({ controller: 'menu_apps', action: 'new', menu_id: model.id }, params: { 'menu_app[menu_position]': model.position }, class: 'button is-rounded is-small is-info') do %>
+      <%= svg_tag 'plus' %>
+      <span>在此菜单之后添加</span>
     <% end %>
   <% end %>
 </td>
