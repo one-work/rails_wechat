@@ -1,3 +1,13 @@
 <main class="has-page-centered">
   <p>欢迎支付！</p>
 </main>
+
+<script>
+  let mchData = {
+    action: 'onIframeReady',
+    displayStyle: 'SHOW_CUSTOM_PAGE',
+    height: 300
+  };
+  let postData = JSON.stringify(mchData)
+  parent.postMessage(postData, 'https://payapp.weixin.qq.com')
+</script>
