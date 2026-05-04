@@ -2,12 +2,7 @@
 <html lang="<%= I18n.locale %>" data-theme="light">
   <head>
     <%= render 'head_title' %>
-    <script
-      type="text/javascript"
-      charset="UTF-8"
-      src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"
-      id="goldplan_script"
-    ></script>
+    <script type="text/javascript" charset="UTF-8" src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
   </head>
   <body>
     <%= yield %>
@@ -27,7 +22,7 @@
 
   let jumpData = {
     action: 'jumpOut',
-    jumpOutUrl: '<%= url_for(controller: 'trade/my/orders', action: 'show', id: @order.id, host: @order.organ.host) %>'
+    jumpOutUrl: '<%= @order %>'
   }
   let jumpPost = JSON.stringify(jumpData)
   const button = document.getElementById('jumpBtn')
