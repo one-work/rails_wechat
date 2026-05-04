@@ -55,6 +55,9 @@ Rails.application.routes.draw do
   end
 
   namespace :wechat, defaults: { business: 'wechat' } do
+    controller :home do
+      get :glodplan
+    end
     controller :wechat do
       post :auth
       post :js

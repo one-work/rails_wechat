@@ -69,6 +69,10 @@ module WxPay
       get "/v3/refund/domestic/refunds/#{out_refund_no}", params: { sub_mchid: @payee.mch_id }, origin: BASE
     end
 
+    def goldplan(type: 'OPEN')
+      post '/v3/goldplan/merchants/changegoldplanstatus', operation_type: '', origin: BASE
+    end
+
     def pay_micropay(out_trade_no:, auth_code:, body:, total_fee:, spbill_create_ip:)
       opts = {
         nonce_str: SecureRandom.hex,
@@ -82,7 +86,7 @@ module WxPay
       opts.merge! sign: WxPay::Sign::Hmac.generate_md5(opts, key: @mch.key)
 
       r = @client.with_options(origin: BASE, debug: Rails.logger.broadcasts[0].instance_values['logdev'].dev, debug_level: 2)
-          .post('/pay/micropay', body: opts.to_xml(root: 'xml', skip_types: true, skip_instruct: true, dasherize: false))
+                 .post('/pay/micropay', body: opts.to_xml(root: 'xml', skip_types: true, skip_instruct: true, dasherize: false))
       Hash.from_xml(r.to_s)['xml']
     end
 

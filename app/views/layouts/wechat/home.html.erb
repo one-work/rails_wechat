@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-theme="light">
+  <head>
+    <%= render 'head_title' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <script type="text/javascript" charset="UTF-8" src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+    <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
