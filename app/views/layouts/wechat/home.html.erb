@@ -26,8 +26,6 @@
   const goldplan_script = document.getElementById('goldplan_script')
 
   goldplan_script.addEventListener('load', event => {
-    document.addEventListener('DOMContentLoaded', event => {
-      parent.postMessage(postData, 'https://payapp.weixin.qq.com')
-    })
+    parent.postMessage(postData, 'https://payapp.weixin.qq.com')
   })
 </script>
