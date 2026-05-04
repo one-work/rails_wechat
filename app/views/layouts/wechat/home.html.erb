@@ -9,6 +9,9 @@
         flex-direction: column;
         justify-content: center;
       }
+      .button {
+        padding: 0.5rem 0.75rem;
+      }
     </style>
   </head>
   <body>
@@ -16,22 +19,19 @@
   </body>
 </html>
 <script>
-  let mchData = {
+  const postData = JSON.stringify({
     action: 'onIframeReady',
     displayStyle: 'SHOW_CUSTOM_PAGE',
-    height: 600
-  }
-  let postData = JSON.stringify(mchData)
-
-  document.addEventListener('DOMContentLoaded', event => {
+    height: 744
+  })
+  document.addEventListener('DOMContentLoaded', () => {
     parent.postMessage(postData, 'https://payapp.weixin.qq.com')
   })
 
-  let jumpData = {
+  const jumpPost = JSON.stringify({
     action: 'jumpOut',
-    jumpOutUrl: '<%= @order %>'
-  }
-  let jumpPost = JSON.stringify(jumpData)
+    jumpOutUrl: '<%= @order_url %>'
+  })
   const button = document.getElementById('jumpBtn')
   button.addEventListener('click', () => {
     parent.postMessage(jumpPost, 'https://payapp.weixin.qq.com')
