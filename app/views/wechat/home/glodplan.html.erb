@@ -9,5 +9,9 @@
     height: 600
   };
   let postData = JSON.stringify(mchData)
-  parent.postMessage(postData, 'https://payapp.weixin.qq.com')
+  const goldplan_script = document.getElementById('goldplan_script')
+
+  goldplan.addEventListener('load', event => {
+    parent.postMessage(postData, 'https://payapp.weixin.qq.com')
+  })
 </script>
