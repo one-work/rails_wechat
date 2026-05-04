@@ -7,7 +7,6 @@
       charset="UTF-8"
       src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"
       id="goldplan_script"
-      async
     ></script>
   </head>
   <body>
@@ -21,9 +20,8 @@
     height: 600
   }
   let postData = JSON.stringify(mchData)
-  const goldplan_script = document.getElementById('goldplan_script')
 
-  goldplan_script.addEventListener('load', event => {
+  document.addEventListener('DOMContentLoaded', event => {
     parent.postMessage(postData, 'https://payapp.weixin.qq.com')
   })
 </script>
