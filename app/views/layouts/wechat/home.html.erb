@@ -21,11 +21,11 @@
     action: 'onIframeReady',
     displayStyle: 'SHOW_CUSTOM_PAGE',
     height: 600
-  };
+  }
   let postData = JSON.stringify(mchData)
   const goldplan_script = document.getElementById('goldplan_script')
 
-  goldplan.addEventListener('load', event => {
+  goldplan_script.addEventListener('load', event => {
     document.addEventListener('DOMContentLoaded', event => {
       parent.postMessage(postData, 'https://payapp.weixin.qq.com')
     })
