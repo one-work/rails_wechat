@@ -1,3 +1,6 @@
 <main class="has-page-centered">
   <p>欢迎支付！</p>
+  <%= link_to({ controller: 'trade/my/orders', action: 'show', id: @order.id, host: @order.organ.host }) do %>
+    <span>查看订单</span>
+  <% end %>
 </main>

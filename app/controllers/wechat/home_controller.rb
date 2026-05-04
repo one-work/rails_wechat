@@ -3,6 +3,8 @@ module Wechat
     after_action :delete_frame_header, only: [:glodplan]
 
     def glodplan
+      real_id, _ = params[:out_trade_no].split('_')
+      @order = Trade::Order.find_by(uuid: real_id)
     end
 
     private
