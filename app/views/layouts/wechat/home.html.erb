@@ -24,4 +24,14 @@
   document.addEventListener('DOMContentLoaded', event => {
     parent.postMessage(postData, 'https://payapp.weixin.qq.com')
   })
+
+  let jumpData = {
+    action: 'jumpOut',
+    jumpOutUrl: '<%= url_for(controller: 'trade/my/orders', action: 'show', id: @order.id, host: @order.organ.host) %>'
+  }
+  let jumpPost = JSON.stringify(jumpData)
+  const button = document.getElementById('jumpBtn')
+  button.addEventListener('click', () => {
+    parent.postMessage(jumpPost, 'https://payapp.weixin.qq.com')
+  })
 </script>
