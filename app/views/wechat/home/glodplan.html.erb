@@ -1,4 +1,10 @@
 <main class="has-page-centered">
   <p style="text-align: center">支付成功！</p>
-  <button id="jumpBtn" class="button">查看订单</button>
+  <% if @order %>
+    <button
+      id="jumpBtn"
+      data-url="<%= url_for(controller: 'trade/my/orders', action: 'show', id: @order.id, host: @order.organ.host) %>"
+      class="button"
+    >查看订单</button>
+  <% end %>
 </main>

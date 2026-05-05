@@ -28,12 +28,13 @@
     parent.postMessage(postData, 'https://payapp.weixin.qq.com')
   })
 
-  const jumpPost = JSON.stringify({
-    action: 'jumpOut',
-    jumpOutUrl: '<%= @order_url %>'
-  })
-  const button = document.getElementById('jumpBtn')
-  button.addEventListener('click', () => {
-    parent.postMessage(jumpPost, 'https://payapp.weixin.qq.com')
+  document.querySelectorAll('button').forEach(button => {
+    const jumpPost = JSON.stringify({
+      action: 'jumpOut',
+      jumpOutUrl: button.dataset.url
+    })
+    button.addEventListener('click', () => {
+      parent.postMessage(jumpPost, 'https://payapp.weixin.qq.com')
+    })
   })
 </script>
