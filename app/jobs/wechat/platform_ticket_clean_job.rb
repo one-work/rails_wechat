@@ -1,8 +1,8 @@
 module Wechat
   class PlatformTicketCleanJob < ApplicationJob
 
-    def perform(ticket)
-      ticket.clean_last
+    def perform
+      PlatformTicket.where(info_type: 'component_verify_ticket')
     end
 
   end
