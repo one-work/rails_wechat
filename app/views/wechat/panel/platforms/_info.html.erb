@@ -1,18 +1,22 @@
 <dl class="as-show is-striped">
   <div>
-    <dd><%= Wechat::Platform.human_attribute_name(:url) %></dd>
-    <dt><%= @platform.domain %></dt>
+    <dt><%= Wechat::Platform.human_attribute_name(:url) %></dt>
+    <dd><%= @platform.domain %></dd>
   </div>
   <div>
-    <dd><%= Wechat::Platform.human_attribute_name(:token) %></dd>
-    <dt><%= @platform.token %></dt>
+    <dt><%= Wechat::Platform.human_attribute_name(:token) %></dt>
+    <dd><%= @platform.token %></dd>
   </div>
   <div>
-    <dd><%= Wechat::Platform.human_attribute_name(:encoding_aes_key) %></dd>
-    <dt><%= @platform.encoding_aes_key %></dt>
+    <dt><%= Wechat::Platform.human_attribute_name(:encoding_aes_key) %></dt>
+    <dd><%= @platform.encoding_aes_key %></dd>
   </div>
   <div>
-    <dd>授权事件接收配置</dd>
-    <dt><%= @platform.encoding_aes_key %></dt>
+    <dt>授权事件接收配置</dt>
+    <dd><%= url_for(controller: 'wechat/platforms', action: 'notify', id: @platform.id, only_path: false) %></dd>
+  </div>
+  <div>
+    <dt>消息与事件接收配置</dt>
+    <dd><%= url_for(controller: 'wechat/platforms', action: 'message', id: @platform.id, appid: '$APPID$', only_path: false) %></dd>
   </div>
 </dl>
