@@ -22,8 +22,7 @@ module Wechat
 
     def disable_app
       app = App.find_by appid: message_hash['AuthorizerAppid']
-      app.enabled = false
-      app.save
+      app&.update enabled: false
     end
 
     def parsed_data
