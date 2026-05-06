@@ -141,9 +141,7 @@ module Wechat
     def login_by_oauth_user(oauth_user, url: url_for(controller: '/home'))
       state = Com::State.find_by(id: params[:state])
       oauth_user.auth_appid = params[:auth_appid]
-      Current.session = oauth_user.session
-      @current_user = oauth_user.user
-      logger.debug "\e[35m  Login by OauthUser #{oauth_user.id} as user: #{current_user&.id}  \e[0m"
+      logger.debug "\e[35m  Login by OauthUser #{oauth_user.id} as user: #{oauth_user.user_id}  \e[0m"
 
       if state
         state.update user_id: oauth_user.user_id, auth_token: oauth_user.auth_token, destroyable: true
@@ -151,6 +149,7 @@ module Wechat
       elsif Current.session.auth_app
         redirect_to url_for(controller: '/home', host: Current.session.auth_app.host, auth_jwt_token: Current.session.generate_jwt_token, state: params[:state]), allow_other_host: true
       else
+        Current.session = oauth_user.session
         redirect_to url
       end
     end
