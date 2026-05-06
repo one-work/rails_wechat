@@ -1,16 +1,18 @@
-<table class="table is-fullwidth is-hoverable as-show">
-  <tbody>
-    <tr>
-      <td class="text-right"><%= Wechat::Platform.human_attribute_name(:url) %></td>
-      <td><%= @platform.domain %></td>
-    </tr>
-    <tr>
-      <td class="text-right"><%= Wechat::Platform.human_attribute_name(:token) %></td>
-      <td><%= @platform.token %></td>
-    </tr>
-    <tr>
-      <td class="text-right"><%= Wechat::Platform.human_attribute_name(:encoding_aes_key) %></td>
-      <td><%= @platform.encoding_aes_key %></td>
-    </tr>
-  </tbody>
-</table>
+<dl class="as-show is-striped">
+  <div>
+    <dd><%= Wechat::Platform.human_attribute_name(:url) %></dd>
+    <dt><%= @platform.domain %></dt>
+  </div>
+  <div>
+    <dd><%= Wechat::Platform.human_attribute_name(:token) %></dd>
+    <dt><%= @platform.token %></dt>
+  </div>
+  <div>
+    <dd><%= Wechat::Platform.human_attribute_name(:encoding_aes_key) %></dd>
+    <dt><%= @platform.encoding_aes_key %></dt>
+  </div>
+  <div>
+    <dd>授权事件接收配置</dd>
+    <dt><%= @platform.encoding_aes_key %></dt>
+  </div>
+</dl>
