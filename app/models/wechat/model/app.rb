@@ -82,7 +82,7 @@ module Wechat
 
       normalizes :service_url, :service_corp, with: -> (value) { value.strip }
 
-      validates :appid, presence: true, uniqueness: true
+      validates :appid, presence: true, uniqueness: { scope: [:type] }
 
       before_validation :init_token, if: -> { token.blank? }
       before_validation :init_aes_key, if: -> { encrypt_mode && encoding_aes_key.blank? }
