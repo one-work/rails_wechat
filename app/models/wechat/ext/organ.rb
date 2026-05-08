@@ -20,7 +20,7 @@ module Wechat
     end
 
     def invite_member!
-      app = provider&.app
+      app = provider&.app || App.global.take
 
       if app
         scene = scenes.find_or_initialize_by(appid: app.appid, organ_id: id, aim: 'invite_member')

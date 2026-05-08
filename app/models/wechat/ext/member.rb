@@ -24,7 +24,7 @@ module Wechat
     end
 
     def invite_member!
-      app = organ.provider&.app
+      app = organ.provider&.app || App.global.take
 
       if app
         scene = scenes.find_or_initialize_by(appid: app.appid, organ_id: organ_id, aim: 'invite_member')
@@ -35,7 +35,7 @@ module Wechat
     end
 
     def invite_contact!(tag_name)
-      app = organ.provider&.app
+      app = organ.provider&.app || App.global.take
 
       if app
         scene = scenes.find_or_initialize_by(appid: app.appid, organ_id: organ_id, aim: 'invite_contact', tag_name: tag_name)
