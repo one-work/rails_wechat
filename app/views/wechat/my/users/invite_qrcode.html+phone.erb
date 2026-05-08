@@ -1,15 +1,11 @@
 <%= render 'head' %>
 
-<div class="box is-padding-less mt-0 mb-4 radiusless" style="padding-top: 1px">
-  <div class="weui-panel__bd">
-    <div class="weui-cells mt-0">
-    <% if @requests.blank? %>
-      <%= render partial: 'gift_content' %>
-    <% else %>
-      <%= render partial: 'request', collection: @requests, as: :request %>
-    <% end %>
-    </div>
-  </div>
+<div class="box is-padding-less">
+  <% if @requests.blank? %>
+    <%= render partial: 'gift_content' %>
+  <% else %>
+    <%= render partial: 'request', collection: @requests, as: :request %>
+  <% end %>
 </div>
 
 <%= paginate @requests, window: 1 %>
