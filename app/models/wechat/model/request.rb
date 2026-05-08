@@ -13,7 +13,7 @@ module Wechat
       attribute :appid, :string, index: true
       attribute :open_id, :string, index: true
       attribute :userid, :string, index: true
-      attribute :handle_id, :integer
+      attribute :handle_id, :uuid
       attribute :reply_body, :json
 
       enum :aim, {
