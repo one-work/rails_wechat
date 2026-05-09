@@ -8,6 +8,5 @@ module Wechat
       belongs_to :hooked, polymorphic: true
     end
 
-
   end
 end
