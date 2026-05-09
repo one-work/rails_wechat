@@ -20,7 +20,12 @@ module Wechat
     end
 
     def url
-      Rails.app.routes.url_for(controller: 'wechat/agents', action: 'create', id: self.id, host: domain) if domain.present?
+      Rails.app.routes.url_for(
+        controller: 'wechat/agents',
+        action: 'create',
+        id: self.id,
+        host: domain
+      ) if domain.present?
     end
 
     def js_login(**url_options)
@@ -34,10 +39,10 @@ module Wechat
     end
 
     def oauth2_url(scope: 'snsapi_privateinfo', state: SecureRandom.hex(16), **url_options)
-      url_options.with_defaults! controller: 'wechat/agents', action: 'login', id: id, host: self.domain.presence || organ.host
+      url_options.with_defaults! controller: 'wechat/agents', action: 'login', id: id
       h = {
         appid: corpid,
-        redirect_uri: Rails.app.routes.url_for(**url_options),
+        redirect_uri: Rails.app.routes.url_for(only_path: false, **url_options),
         response_type: 'code',
         scope: scope,
         state: state,
