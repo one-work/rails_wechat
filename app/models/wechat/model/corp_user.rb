@@ -30,7 +30,7 @@ module Wechat
       }
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
-      belongs_to :member, ->(o) { where(organ_id: o.organ_id) }, class_name: 'Org::Member', foreign_key: :userid, primary_key: :corp_userid, optional: true
+      belongs_to :member, class_name: 'Org::Member', foreign_key: [:organ_id, :userid], primary_key: [:organ_id, :corp_userid], optional: true
       belongs_to :account, class_name: 'Auth::Account', foreign_key: :identity, primary_key: :identity, optional: true
       has_many :sessions, class_name: 'Auth::Session', primary_key: [:userid, :suite_id, :corpid, :identity], foreign_key: [:corp_userid, :suite_id, :appid, :identity], dependent: :nullify
 
@@ -186,7 +186,7 @@ module Wechat
     end
 
     def session
-      sessions.effective.take || sessions.create
+      sessions.effective.where(member_id: member.id).take || sessions.create(member_id: member.id)
     end
 
   end
