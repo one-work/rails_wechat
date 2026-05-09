@@ -106,7 +106,7 @@ Rails.application.routes.draw do
     resources :providers, only: [:show] do
       member do
         get :auth
-        post :callback
+        match :callback, via: [:get, :post]
         post :notify
       end
     end
