@@ -1,7 +1,7 @@
 module Wechat
   class ProvidersController < BaseController
     skip_before_action :verify_authenticity_token, raise: false if whether_filter(:verify_authenticity_token)
-    before_action :set_provider, only: [:login, :auth]
+    before_action :set_provider, only: [:login, :auth, :callback]
 
     def login
       @corp_user = @provider.generate_corp_user(params[:code])
@@ -31,6 +31,10 @@ module Wechat
       else
         render :auth
       end
+    end
+
+    def callback
+      head :ok
     end
 
     private

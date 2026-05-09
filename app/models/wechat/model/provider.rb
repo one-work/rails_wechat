@@ -67,7 +67,7 @@ module Wechat
       Rails.app.routes.url_for(
         controller: 'wechat/providers',
         action: 'callback',
-        id: id,
+        id: corp_id,
         only_path: false
       )
     end
