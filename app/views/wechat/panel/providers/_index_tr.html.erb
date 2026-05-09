@@ -1,0 +1,11 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'suites', provider_id: model.id),
+      icon: 'folder',
+      title: t('.suites.index.title'),
+      position: 0
+    }
+  ) { yield }
+%>

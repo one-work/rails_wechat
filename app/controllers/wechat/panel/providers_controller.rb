@@ -5,7 +5,7 @@ module Wechat
     def provider_params
       _p = params.fetch(:provider, {}).permit(
         :name,
-        :corpid,
+        :corp_id,
         :provider_secret
       )
       _p[:provider_secret]&.strip!
