@@ -32,7 +32,7 @@ module Wechat
       belongs_to :organ, class_name: 'Org::Organ', optional: true
       belongs_to :member, ->(o) { where(organ_id: o.organ_id) }, class_name: 'Org::Member', foreign_key: :userid, primary_key: :corp_userid, optional: true
       belongs_to :account, class_name: 'Auth::Account', foreign_key: :identity, primary_key: :identity, optional: true
-      has_many :authorized_tokens, class_name: 'Auth::AuthorizedToken', primary_key: [:userid, :suite_id, :corpid, :identity], foreign_key: [:corp_userid, :suite_id, :appid, :identity], dependent: :nullify
+      has_many :sessions, class_name: 'Auth::Session', primary_key: [:userid, :suite_id, :corpid, :identity], foreign_key: [:corp_userid, :suite_id, :appid, :identity], dependent: :nullify
 
       belongs_to :suite, foreign_key: :suite_id, primary_key: :suite_id, optional: true
       belongs_to :corp, ->(o) { where(suite_id: o.suite_id) }, foreign_key: :corpid, primary_key: :corpid, optional: true
@@ -185,8 +185,8 @@ module Wechat
       suite.provider.api.active_account(corpid, userid, rest_code['active_code'])
     end
 
-    def authorized_token
-      authorized_tokens.find(&:effective?) || authorized_tokens.create
+    def session
+      sessions.effective.take || sessions.create
     end
 
   end

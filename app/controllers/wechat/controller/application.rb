@@ -161,7 +161,8 @@ module Wechat
       logger.debug "\e[35m  Login by CorpUser #{corp_user.id}  \e[0m"
 
       if state
-        render 'state_visit', layout: 'raw', locals: { state: state, auth_token: Current.session.once_token }
+        state.update auth_token: Current.session.once_token, destroyable: true
+        render 'state_visit', layout: 'raw', locals: { state: state }
       else
         render 'visit', layout: 'raw', locals: { url: url }
       end
