@@ -19,14 +19,10 @@
   <dd><%= @suite_receive.event_key %></dd>
 </div>
 <div>
-  <dt><%= Wechat::SuiteReceive.human_attribute_name(:content) %></dt>
-  <dd><%= @suite_receive.content %></dd>
-</div>
-<div>
   <dt><%= Wechat::SuiteReceive.human_attribute_name(:info_type) %></dt>
   <dd><%= @suite_receive.info_type %></dd>
 </div>
 <div>
   <dt><%= Wechat::SuiteReceive.human_attribute_name(:message_hash) %></dt>
-  <dt><%= simple_format @suite_receive.message_hash %></dd>
+  <dd><%= simple_format @suite_receive.message_hash %></dd>
 </div>
