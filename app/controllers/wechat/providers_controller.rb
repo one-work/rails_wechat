@@ -34,7 +34,8 @@ module Wechat
     end
 
     def callback
-      head :ok
+      r = @provider.decrypt(params[:echostr])
+      render plain: r
     end
 
     private

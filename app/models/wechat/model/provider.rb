@@ -24,7 +24,9 @@ module Wechat
     end
 
     def decrypt(msg)
-      Wechat::Cipher.qy_decrypt(msg, encoding_aes_key)
+      r = Wechat::Cipher.decrypt(msg, encoding_aes_key)
+      logger.debug "\e[35m  Decrypted: #{r}  \e[0m"
+      r
     end
 
     def api
