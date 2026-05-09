@@ -230,6 +230,7 @@ Rails.application.routes.draw do
               post :search_organs
             end
             member do
+              post :edit_organ
               get :organ
             end
             resources :corp_users
