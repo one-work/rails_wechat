@@ -45,7 +45,7 @@ module Wechat
           URI::HTTPS.build(host: computed_webview_domain).to_s,
           URI::HTTPS.build(host: domain).to_s,
           URI::HTTPS.build(host: Rails.application.routes.default_url_options[:host]).to_s,
-          URI::HTTPS.build(host: "org.#{Rails.application.routes.default_url_options[:host]}").to_s
+          URI::HTTPS.build(host: "mp.#{Rails.application.routes.default_url_options[:host]}").to_s
         ].uniq.compact
       }
 
@@ -54,6 +54,7 @@ module Wechat
       if r['errcode'] == 0
         self.update webview_domain_registered: r['webviewdomain']
       end
+      h[:webviewdomain]
     end
 
     def set_domain(action: 'set', extra: [])
