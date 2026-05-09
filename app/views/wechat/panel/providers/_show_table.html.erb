@@ -11,6 +11,10 @@
   <dd><%= @provider.provider_secret %></dd>
 </div>
 <div>
+  <dt><%= Wechat::Provider.human_attribute_name(:url) %></dt>
+  <dd><%= @provider.url %></dd>
+</div>
+<div>
   <dt><%= Wechat::Provider.human_attribute_name(:token) %></dt>
   <dd><%= @provider.token %></dd>
 </div>
