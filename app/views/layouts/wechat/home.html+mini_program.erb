@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-theme="light">
+  <head>
+    <%= render 'head_title' %>
+    <script type="text/javascript" charset="UTF-8" src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin"></script>
+    <style>
+      .has-page-centered {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .button {
+        padding: 0.5rem 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
+<script>
+  const postData = JSON.stringify({
+    action: 'onIframeReady',
+    displayStyle: 'SHOW_CUSTOM_PAGE',
+    height: 744
+  })
+  document.addEventListener('DOMContentLoaded', () => {
+    parent.postMessage(postData, 'https://payapp.weixin.qq.com')
+  })
+
+  document.querySelectorAll('button').forEach(button => {
+    const jumpPost = JSON.stringify({
+      action: 'jumpOut',
+      jumpOutUrl: button.dataset.url
+    })
+    button.addEventListener('click', () => {
+      parent.postMessage(jumpPost, 'https://payapp.weixin.qq.com')
+    })
+  })
+</script>
