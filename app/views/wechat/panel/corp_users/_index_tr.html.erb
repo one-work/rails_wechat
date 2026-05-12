@@ -1,0 +1,10 @@
+<%=
+  tr_tag(
+    model,
+    {
+      href: url_for(controller: 'corp_external_users', userid: model.userid),
+      icon: 'users-line',
+      title: t('.corp_external_users.index.title')
+    }
+  ) { yield }
+%>
