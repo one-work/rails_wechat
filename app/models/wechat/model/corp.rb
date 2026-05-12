@@ -40,7 +40,7 @@ module Wechat
       belongs_to :suite, foreign_key: :suite_id, primary_key: :suite_id, optional: true
 
       has_many :suite_receives, ->(o) { where(suiteid: o.suite_id) }, primary_key: :open_corpid, foreign_key: :auth_corp_id
-      has_many :corp_users, ->(o) { where(suite_id: o.suite_id) }, primary_key: :corpid, foreign_key: :corpid
+      has_many :corp_users, primary_key: :corpid, foreign_key: :corpid
       has_many :contacts, ->(o) { where(suite_id: o.suite_id) }, primary_key: :corpid, foreign_key: :corpid
       has_many :supporters, primary_key: :corpid, foreign_key: :corpid
 
