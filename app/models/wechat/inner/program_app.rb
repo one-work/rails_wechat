@@ -37,10 +37,6 @@ module Wechat
       end
     end
 
-    def mp_domain
-      organ&.mp_domain
-    end
-
     def generate_wechat_user(code)
       info = api.jscode2session(code)
       logger.debug "\e[35m  Program Generate User: #{info}, Code: #{code}  \e[0m"
