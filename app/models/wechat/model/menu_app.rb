@@ -4,6 +4,8 @@ module Wechat
     include Inner::Menu
 
     included do
+      attr_accessor :disabled_id
+
       attribute :appid, :string, index: true
       attribute :root_position, :integer
       attribute :menu_position, :integer
