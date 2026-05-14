@@ -146,6 +146,21 @@ module Wechat
       )
     end
 
+    def reply_for_member
+      url = scene_organ.redirect_url(
+        auth_token: wechat_user.auth_token,
+        controller: 'me/home',
+        host: "admin.#{Rails.application.routes.default_url_options[:host]}"
+      )
+      desc = "#{scene_organ.name}欢迎您\n点击链接进入门店后台"
+
+      reply_params(
+        title: wechat_user.attributes['name'].present? ? "您好，#{wechat_user.attributes['name']}" : '您好',
+        description: desc,
+        url: url
+      )
+    end
+
     def reply_for_login
       if wechat_user.unionid.present?
         if scene.state_uuid
@@ -230,18 +245,21 @@ module Wechat
     end
 
     def to_reply!
-      reply = if ['SCAN', 'subscribe'].include?(event) && body.to_s.start_with?('session_')
-        reply_for_login
+      if ['SCAN', 'subscribe'].include?(event)
+        if body.to_s.start_with?('session_')
+          reply = reply_for_login
+        elsif body.to_s.start_with?('invite_member_')
+          reply = reply_for_member
+        else
+          reply = build_empty_reply
+        end
       else
-        reply_from_rule || reply_from_response || reply_for_user
+        reply = reply_from_rule || reply_from_response || reply_for_user || build_empty_reply
       end
 
-      if reply
-        self.reply_body = reply.reply_body
-        self.save
-      else
-        reply = build_empty_reply
-      end
+      self.reply_body = reply.reply_body
+      self.save
+
       reply
     end
 
