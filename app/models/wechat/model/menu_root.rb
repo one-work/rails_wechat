@@ -17,7 +17,7 @@ module Wechat
 
       r = []
       r.concat menus.each { |i| i.disabled_id = disabled_ids[i.id] }
-      r.concat app.menu_apps
+      r.concat menu_apps.where(appid: app.appid)
       r.sort_by!(&:final_position)
       r
     end
