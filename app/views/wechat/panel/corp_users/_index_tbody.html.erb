@@ -1,9 +1,13 @@
 <td>
-  <p><%= model.userid %></p>
-  <p class="text-grey"><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p><%= model.identity %></p>
+  <p class="family-monospace text-grey"><%= model.userid %></p>
 </td>
 <td>
   <p><%= model.device_id %></p>
   <p><%= model.open_userid %></p>
 </td>
 <td><%= model.member&.id %></td>
+<td>
+  <p></p>
+  <p class="text-grey"><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
