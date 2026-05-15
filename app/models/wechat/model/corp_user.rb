@@ -46,10 +46,10 @@ module Wechat
 
       before_validation :sync_organ, if: -> { corpid_changed? }
       before_validation :init_corp, if: -> { suite_id.present? && suite_id_changed? }
+      before_save :get_detail, if: -> { user_ticket_changed? }
       after_save :auto_join_organ, if: -> { organ_id.present? && saved_change_to_organ_id? }
       after_save :init_account, if: -> { identity.present? && saved_change_to_identity? }
       after_create_commit :sync_externals_later
-      after_create_commit :get_detail_later
     end
 
     def sync_organ
@@ -73,10 +73,6 @@ module Wechat
       member.save
     end
 
-    def get_detail_later
-      CorpUserDetailJob.perform_later(self)
-    end
-
     def get_detail
       r = (suite || agent).api.user_detail(user_ticket)
       logger.debug "\e[35m  user_detail: #{r}  \e[0m"
@@ -84,7 +80,6 @@ module Wechat
         self.assign_attributes r.slice('name', 'gender', 'qr_code', 'open_userid')
         self.avatar_url = r['avatar']
         self.identity = r['mobile'].presence || r['email'].presence
-        self.save
       end
     end
 
