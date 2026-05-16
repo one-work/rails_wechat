@@ -18,6 +18,7 @@ module WxPay::Sign
         "#{k}=#{v}"
       end.join('&')
       string_sign_temp = "#{query}&key=#{key}"
+      Rails.logger.debug "\e[35m  MD5:#{string_sign_temp}  \e[0m"
 
       Digest::MD5.hexdigest(string_sign_temp).upcase
     end

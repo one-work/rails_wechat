@@ -85,7 +85,7 @@ module WxPay
       }
       opts.merge! sign: WxPay::Sign::Hmac.generate_md5(opts, key: @mch.key)
 
-      r = @client.with_options(origin: BASE, debug: Rails.logger.broadcasts[0].instance_values['logdev'].dev, debug_level: 2)
+      r = @client.with_options(origin: BASE, debug: STDERR, debug_level: 2)
                  .post('/pay/micropay', body: opts.to_xml(root: 'xml', skip_types: true, skip_instruct: true, dasherize: false))
       Hash.from_xml(r.to_s)['xml']
     end
