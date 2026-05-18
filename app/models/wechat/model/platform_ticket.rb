@@ -15,8 +15,6 @@ module Wechat
       belongs_to :platform, foreign_key: :appid, primary_key: :appid, optional: true
 
       before_save :parsed_data, if: -> { ticket_data_changed? }
-      after_create_commit :update_platform_ticket, if: -> { platform.present? }
-      after_create_commit :clean_last_later, if: -> { ['component_verify_ticket'].include?(info_type) }
       after_create_commit :disable_app, if: -> { ['unauthorized'].include?(info_type) }
     end
 
@@ -30,16 +28,11 @@ module Wechat
       data = Hash.from_xml(content).fetch('xml', {})
       self.message_hash = data
       self.info_type = data['InfoType']
-    end
 
-    def update_platform_ticket
       r = message_hash['ComponentVerifyTicket']
-      return unless r.present?
-      platform.update verify_ticket: r
-    end
-
-    def clean_last_later
-      PlatformTicketCleanJob.perform_later(self)
+      if r.present? && platform.present?
+        platform.verify_ticket = r
+      end
     end
 
     def clean_last
