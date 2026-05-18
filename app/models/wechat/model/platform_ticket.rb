@@ -36,9 +36,5 @@ module Wechat
       end
     end
 
-    def clean_last
-      self.class.where(appid: appid, info_type: info_type).where.not(id: id).delete_all
-    end
-
   end
 end
