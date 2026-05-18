@@ -14,7 +14,7 @@ module Wechat
 
       belongs_to :platform, foreign_key: :appid, primary_key: :appid, optional: true
 
-      before_save :parsed_data, if: -> { ticket_data_changed? }
+      before_save :parse_data, if: -> { ticket_data_changed? }
       after_create_commit :disable_app, if: -> { ['unauthorized'].include?(info_type) }
     end
 
@@ -23,7 +23,7 @@ module Wechat
       app&.update enabled: false
     end
 
-    def parsed_data
+    def parse_data
       content = platform.decrypt(ticket_data)
       data = Hash.from_xml(content).fetch('xml', {})
       self.message_hash = data
@@ -32,6 +32,7 @@ module Wechat
       r = message_hash['ComponentVerifyTicket']
       if r.present? && platform.present?
         platform.verify_ticket = r
+        platform.save
       end
     end
 
