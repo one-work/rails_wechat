@@ -144,7 +144,7 @@ module Wechat
       logger.debug "\e[35m  Login by OauthUser #{oauth_user.id} as user: #{oauth_user.user_id}  \e[0m"
 
       if state
-        state.update user_id: oauth_user.user_id, auth_token: oauth_user.auth_token, destroyable: true
+        state.update user_id: oauth_user.user_id, auth_token: oauth_user.auth_token(host: state.host), destroyable: true
         render 'state_visit', layout: 'raw', locals: { state: state }
       elsif Current.session&.auth_app
         url = url_for(
