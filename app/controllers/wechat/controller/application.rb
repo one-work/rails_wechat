@@ -146,7 +146,7 @@ module Wechat
       if state
         state.update user_id: oauth_user.user_id, auth_token: oauth_user.auth_token, destroyable: true
         render 'state_visit', layout: 'raw', locals: { state: state }
-      elsif Current.session.auth_app
+      elsif Current.session&.auth_app
         redirect_to url_for(controller: '/home', host: Current.session.auth_app.host, auth_jwt_token: Current.session.generate_jwt_token, state: params[:state]), allow_other_host: true
       else
         Current.session = oauth_user.session
