@@ -11,7 +11,17 @@
 </div>
 
 <% if request.variant.include?(:wechat) && request.variant.exclude?(:mini_program) || Rails.env.local? %>
-
+  <div
+    class="media as-boxed"
+    data-controller="mask"
+    data-mask-id-value="mask"
+    data-action="click->mask#show"
+  >
+    <div class="media-content">分享好友/发个朋友圈</div>
+    <div class="media-right">
+      <%= svg_tag 'chevron-right' %>
+    </div>
+  </div>
 <% end %>
 
 <div class="tabs is-centered mt-3">
