@@ -6,9 +6,3 @@
   data-wx-share-link-value="<%= url_for(controller: '/home', invite_code: @scene.id, only_path: false) %>"
   data-wx-share-image-value="<%= current_organ.logo.url || image_url('logo.png') %>"
 ></div>
-<div
-  data-controller="mask"
-  data-action="click->mask#close"
-  class="weui-mask-share display-none"
-  id="mask"
-></div>
