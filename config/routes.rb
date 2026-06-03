@@ -283,6 +283,12 @@ Rails.application.routes.draw do
     end
 
     namespace :board, defaults: { namespace: 'board' } do
+      resource :user, only: [] do
+        collection do
+          get :invite_qrcode
+          get :gift
+        end
+      end
       resources :organs
       resources :wechat_users
     end
