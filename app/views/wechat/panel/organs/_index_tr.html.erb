@@ -1,10 +1,1 @@
-
-
-  <td>
-    <div data-show-target="item" class="visibility-hidden">
-      <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'pencil', class: 'icon text-link' %>
-      <% end %>
-    </div>
-  </td>
-
+<%= tr_tag(model, icons: ['edit']) { yield } %>
