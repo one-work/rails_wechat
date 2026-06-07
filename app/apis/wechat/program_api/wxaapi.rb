@@ -3,7 +3,7 @@ class Wechat::ProgramApi
     BASE = 'https://api.weixin.qq.com/wxaapi/'
 
     # https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/template-message/templateMessage.getTemplateList.html
-    def templates
+    def tmpl_templates
       r = get 'newtmpl/gettemplate', origin: BASE
       if r['errcode'] == 0
         r['data']
@@ -11,6 +11,10 @@ class Wechat::ProgramApi
         Rails.logger.info r
         r
       end
+    end
+
+    def tmpl_categories
+      get 'newtmpl/getcategory', origin: BASE
     end
 
     def pub_templates

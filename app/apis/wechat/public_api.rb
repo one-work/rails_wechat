@@ -3,6 +3,7 @@
 module Wechat
   class PublicApi < BaseApi
     include BaseApi::Sns
+    include ProgramApi::Wxaapi
     include Agency
     include Common
     include Material
