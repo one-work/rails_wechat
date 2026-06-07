@@ -17,8 +17,10 @@ class Wechat::ProgramApi
       get 'newtmpl/getcategory', origin: BASE
     end
 
-    def pub_templates(*ids, start: 0, limit: 30)
-      get 'newtmpl/getpubtemplatetitles', ids: ids.join(','), start: start, limit: limit, origin: BASE
+    def pub_templates(*ids, start: 0, limit: 30, **options)
+      r = ids.join(',')
+      puts r
+      get 'newtmpl/getpubtemplatetitles', ids: r, start: start, limit: limit, origin: BASE, **options
     end
 
     # https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.getPubTemplateKeyWordsById.html
