@@ -11,8 +11,13 @@ class Wechat::PublicApi
       r['template_list']
     end
 
-    def add_template(template_id_short)
-      post 'template/api_add_template', template_id_short: template_id_short, origin: BASE
+    def add_template(template_id_short, *list)
+      post(
+        'template/api_add_template',
+        template_id_short: template_id_short,
+        keyword_name_list: list,
+        origin: BASE
+      )
     end
 
     def del_template(template_id)
