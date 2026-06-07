@@ -20,7 +20,7 @@ class Wechat::ProgramApi
     def pub_templates(*ids, start: 0, limit: 30, **options)
       r = ids.join(',')
       puts r
-      get 'newtmpl/getpubtemplatetitles', ids: r, start: start, limit: limit, origin: BASE, **options
+      get 'newtmpl/getpubtemplatetitles', ids: "\"#{r}\"", start: start, limit: limit, origin: BASE, **options
     end
 
     # https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.getPubTemplateKeyWordsById.html
