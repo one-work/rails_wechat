@@ -1,0 +1,23 @@
+class Wechat::PublicApi
+  module Template
+    BASE = 'https://api.weixin.qq.com/cgi-bin/'
+
+    def industry
+      r = get 'template/get_industry', origin: BASE
+    end
+
+    def templates
+      r = get 'template/get_all_private_template', origin: BASE
+      r['template_list']
+    end
+
+    def add_template(template_id_short)
+      post 'template/api_add_template', template_id_short: template_id_short, origin: BASE
+    end
+
+    def del_template(template_id)
+      post 'template/del_private_template', template_id: template_id, origin: BASE
+    end
+
+  end
+end

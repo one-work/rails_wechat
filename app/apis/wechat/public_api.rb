@@ -8,6 +8,7 @@ module Wechat
     include Material
     include Menu
     include Mp
+    include Template
     include User
     include Wxopen
 
