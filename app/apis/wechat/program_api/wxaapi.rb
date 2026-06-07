@@ -17,7 +17,7 @@ class Wechat::ProgramApi
       get 'newtmpl/getcategory', origin: BASE
     end
 
-    def pub_templates(start: 0, limit: 30, **ids)
+    def pub_templates(*ids, start: 0, limit: 30)
       get 'newtmpl/getpubtemplatetitles', ids: ids.join(','), start: start, limit: limit, origin: BASE
     end
 
