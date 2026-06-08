@@ -120,7 +120,7 @@ zh:
           title: 组织列表
       template_configs:
         index:
-          title: 模板设置
+          title: 模板消息
         apps:
           title: 开通详情
       template_key_words:
