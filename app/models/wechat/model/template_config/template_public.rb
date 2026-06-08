@@ -17,7 +17,10 @@ module Wechat
 
     def data_keys
       r = RegexpUtil.between('{{', '.D(ATA|ata)}}')
-      content.gsub(r).to_a
+      content.split("\n").each_with_object({}) do |line, h|
+        note, name = line.split(':')
+        h.merge! name.match(r) => note
+      end
     end
 
     def sync_to_wechat(app)
@@ -33,8 +36,9 @@ module Wechat
     end
 
     def sync_keys
-      data_keys.each do |key|
+      data_keys.each do |key, note|
         tkw = template_key_words.find_or_initialize_by(name: key)
+        tkw.note = note
         tkw.save
       end
     end
