@@ -19,7 +19,7 @@ module Wechat
       r = RegexpUtil.between('{{', '.D(ATA|ata)}}')
       content.split("\n").each_with_object({}) do |line, h|
         note, name = line.split(':')
-        h.merge! name.match(r) => note
+        h.merge! name.match(r).to_s => note
       end
     end
 
