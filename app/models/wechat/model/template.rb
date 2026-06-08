@@ -13,6 +13,7 @@ module Wechat
 
       belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
       belongs_to :template_config, foreign_key: :content, primary_key: :content, optional: true
+
       has_many :notices, dependent: :delete_all
       has_many :msg_requests, ->(o){ where(appid: o.appid) }, foreign_key: :body, primary_key: :template_id
 

@@ -5,6 +5,7 @@
       href: url_for(controller: 'notices', template_id: model.id),
       icon: 'inbox',
       title: t('.notices.index.title')
-    }
+    },
+    icons: ['show', 'destroy']
   ) { yield }
 %>

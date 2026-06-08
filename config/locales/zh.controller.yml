@@ -248,6 +248,8 @@ zh:
       templates:
         index:
           title: 通知模板
+        sync:
+          title: 同步模板
       notices:
         index:
           title: 通知
