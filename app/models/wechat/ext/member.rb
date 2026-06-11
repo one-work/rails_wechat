@@ -5,7 +5,6 @@ module Wechat
 
     included do
       attribute :corp_userid, :string
-      attribute :wechat_openid, :string, default: ''
 
       belongs_to :member_inviter, class_name: 'Org::Member', optional: true
       belongs_to :wechat_user, class_name: 'Wechat::WechatUser', foreign_key: :wechat_openid, primary_key: :uid, optional: true
@@ -19,8 +18,6 @@ module Wechat
 
       scope :wechat, -> { where.not(wechat_openid: [nil, '']) }
       scope :corp, -> { where.not(corp_userid: [nil, '']) }
-
-      before_save :sync_from_wechat_user, if: -> { wechat_openid.present? && wechat_openid_changed? }
     end
 
     def invite_member!
@@ -43,10 +40,6 @@ module Wechat
         scene.save
         scene
       end
-    end
-
-    def sync_from_wechat_user
-      self.identity = identity.presence || wechat_user.identity
     end
 
   end

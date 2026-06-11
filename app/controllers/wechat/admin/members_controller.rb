@@ -32,7 +32,6 @@ module Wechat
 
     def member_params
       params.fetch(:member, {}).permit(
-        :wechat_openid,
         :identity,
         :name
       )
