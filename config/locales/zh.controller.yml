@@ -247,6 +247,8 @@ zh:
       wechat_users:
         index:
           title: 用户
+        chat:
+          title: 聊天
       templates:
         index:
           title: 通知模板
