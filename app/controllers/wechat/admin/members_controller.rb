@@ -15,14 +15,14 @@ module Wechat
       q_params = {}
       q_params.merge! default_params
 
-      @members = Org::Member.includes(:roles, :wechat_user).default_where(q_params).wechat.order(id: :desc).page(params[:page])
+      @members = Org::Member.includes(:roles, :wechat_user).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def corp
       q_params = {}
       q_params.merge! default_params
 
-      @members = Org::Member.includes(:roles).default_where(q_params).corp.order(id: :desc).page(params[:page])
+      @members = Org::Member.includes(:roles).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     private
