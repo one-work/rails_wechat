@@ -29,10 +29,10 @@ module Wechat
     end
 
     def sync_templates
-      api.tmpl_templates.each do |template|
-        template = templates.find_or_initialize_by(template_id: template['priTmplId'])
-        template.template_type = template['type']
-        template.assign_attributes template.slice('title', 'content', 'example')
+      api.tmpl_templates.each do |tmpl|
+        template = templates.find_or_initialize_by(template_id: tmpl['priTmplId'])
+        template.template_type = tmpl['type']
+        template.assign_attributes tmpl.slice('title', 'content', 'example')
         template.save
       end
     end
