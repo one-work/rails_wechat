@@ -28,6 +28,15 @@ module Wechat
       webview_domain.presence || domain
     end
 
+    def sync_templates
+      api.tmpl_templates.each do |template|
+        template = templates.find_or_initialize_by(template_id: template['priTmplId'])
+        template.template_type = template['type']
+        template.assign_attributes template.slice('title', 'content', 'example')
+        template.save
+      end
+    end
+
     def webview_url(**options)
       if webview_path
         path = webview_path.start_with?('/') ? webview_path : "/#{webview_path}"
