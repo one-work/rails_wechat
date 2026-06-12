@@ -1,8 +1,8 @@
 module Wechat
   class SceneCleanJob < ApplicationJob
 
-    def perform(scene)
-      scene.destroy
+    def perform
+      Scene.where(aim: 'login').expired.destroy_all
     end
 
   end
