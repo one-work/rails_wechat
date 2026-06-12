@@ -9,6 +9,7 @@ module Wechat
       attribute :expire_at, :datetime
       attribute :qrcode_ticket, :string
       attribute :qrcode_url, :string
+      attribute :uuid, :string, index: true, default: -> { UidUtil.nsec_uuid('SC') }
       attribute :appid, :string, index: true
       attribute :menu_id, :string
       attribute :note, :string
@@ -33,7 +34,6 @@ module Wechat
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
       belongs_to :handle, polymorphic: true, optional: true
-
       belongs_to :app, foreign_key: :appid, primary_key: :appid
       belongs_to :response, ->(o) { where(appid: o.appid) }, foreign_key: :match_value, primary_key: :match_value, optional: true
       belongs_to :tag, ->(o) { where(appid: o.appid) }, foreign_key: :tag_name, primary_key: :name, optional: true
@@ -129,7 +129,13 @@ module Wechat
 
     def get_wxa_qrcode
       options = { env_version: env_version }
-      r = app.api.get_wxacode_unlimit(match_value, **options)
+      if match_value.size > 32
+        value = uuid
+      else
+        value = match_value
+      end
+
+      r = app.api.get_wxacode_unlimit(value, **options)
       begin
         self.qrcode.attach io: r, filename: "#{match_value}"
       rescue => e

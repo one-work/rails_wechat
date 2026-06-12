@@ -216,7 +216,14 @@ module Wechat
     end
 
     def invite_user!
-      _handle_id, _organ_id, _tag_name = body.sub(/invite_(user|member|contact)_/, '').split('_')
+      str = body.sub(/invite_(user|member|contact)_/, '')
+      if str.start_with?('SC')
+        scene = Scene.find_by(uuid: str)
+        return unless scene
+        _handle_id, _organ_id, _tag_name = scene.match_value.sub(/invite_(user|member|contact)_/, '').split('_')
+      else
+        _handle_id, _organ_id, _tag_name = str.split('_')
+      end
 
       if body.to_s.start_with?('invite_user_')
         self.aim = 'invite_user'
