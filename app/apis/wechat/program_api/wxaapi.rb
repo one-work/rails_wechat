@@ -31,7 +31,7 @@ class Wechat::ProgramApi
       end
     end
 
-    def add_template(tid, kid_list, description: 'tst')
+    def add_template(tid, kid_list: [], description: 'tst')
       post 'newtmpl/addtemplate', tid: tid, kidList: kid_list, sceneDesc: description, origin: BASE
     end
 
