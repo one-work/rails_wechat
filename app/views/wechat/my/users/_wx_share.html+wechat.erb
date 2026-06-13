@@ -3,6 +3,6 @@
   data-controller="wx-share"
   data-wx-share-title-value="分享有礼"
   data-wx-share-desc-value="邀请您下单"
-  data-wx-share-link-value="<%= url_for(controller: '/home', invite_code: @scene.uuid, only_path: false) %>"
+  data-wx-share-link-value="<%= url_for(controller: '/home', invite_code: current_user.invite_code, only_path: false) %>"
   data-wx-share-image-value="<%= current_organ.logo.url || image_url('logo.png') %>"
 ></div>
