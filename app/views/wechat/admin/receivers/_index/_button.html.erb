@@ -1,8 +1,8 @@
-<%= button_to({ action: 'new', **request.query_parameters.except(:id) }, data: { turbo_frame: 'modal' }, class: 'button is-rounded is-primary') do %>
+<%= button_to({ action: 'new', **request.GET.except(:id) }, data: { turbo_frame: 'modal' }, class: 'button is-rounded is-primary') do %>
   <%= svg_tag 'plus' %>
   <span><%= t('.new.title') %></span>
 <% end %>
-<%= link_to({ action: 'users', **request.query_parameters.except(:id) }, class: 'button is-rounded is-info') do %>
+<%= link_to({ action: 'users', **request.GET.except(:id) }, class: 'button is-rounded is-info') do %>
   <%= svg_tag 'plus' %>
   <span><%= t('wechat.admin.receivers.users.title') %></span>
 <% end %>
