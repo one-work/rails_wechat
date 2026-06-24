@@ -21,7 +21,7 @@ module Wechat
         if app.respond_to?(:oauth2_url)
           url = app.oauth2_url(state: state_enter(destroyable: false).id, **wechat_oauth_options)
         end
-      elsif [:mini_program, :douyin].include? request.variant
+      elsif ([:mini_program, :douyin] & request.variant).present?
         check_jwt_token if params[:auth_jwt_token]
         return if current_user && Current.session&.oauth_user
         render 'require_program_login', layout: 'raw', locals: { state: state_enter(destroyable: false).id }, status: :unauthorized and return
