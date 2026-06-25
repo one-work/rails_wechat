@@ -5,7 +5,7 @@ module Wechat
     private
     def init_qrcode
       provider_app = organ&.provider&.app || App.global.take
-      if provider_app
+      if provider_app&.oauth_enable
         scene = provider_app.scenes.find_or_initialize_by(match_value: "session_#{session_id}")
         scene.expire_seconds = 600 # 默认 600 秒有效
         scene.check_refresh
