@@ -63,7 +63,8 @@ module Wechat
             'openUserProfile', 'shareToExternalMoments',
             'openAddress', 'getLocation', 'openLocation',
             'chooseImage', 'previewImage', 'uploadImage',
-            'updateTimelineShareData', 'updateAppMessageShareData'
+            'updateTimelineShareData', 'updateAppMessageShareData',
+            'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem'
           ],
           open_tags: ['wx-open-subscribe'],
           **options
