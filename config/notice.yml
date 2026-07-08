@@ -1,0 +1,10 @@
+Wechat::Register:
+  default:
+    only: ['id_name']
+    methods: ['time', 'bind_url', 'remark']
+  code:
+    only: ['id_name', 'mobile']
+    methods: ['hello_code', 'keyword1_code', 'remark_code']
+  auth:
+    only: ['id_name']
+    methods: ['auth_keyword2', 'state_i18n', 'auth_remark']

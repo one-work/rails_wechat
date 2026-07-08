@@ -9,7 +9,7 @@ module Wechat
       attribute :email_code, :string
       attribute :state, :string, default: 'init'
       attribute :appid, :string
-      attribute :password, :string
+      attribute :password, :string, default: -> { SecureRandom.urlsafe_base64 }
       attribute :mobile, :string
       attribute :mobile_code, :string
       attribute :personal_wechat, :string
@@ -36,16 +36,7 @@ module Wechat
         done: 'done'
       }
 
-      after_initialize :init_password, if: :new_record?
       before_save :compute_state, if: -> { appid_changed? }
-
-      acts_as_notify only: [:id_name], methods: [:time, :bind_url, :remark]
-      acts_as_notify :code, only: [:id_name, :mobile], methods: [:hello_code, :keyword1_code, :remark_code]
-      acts_as_notify :auth, only: [:id_name], methods: [:auth_keyword2, :state_i18n, :auth_remark]
-    end
-
-    def init_password
-      self.password = SecureRandom.urlsafe_base64
     end
 
     def time
