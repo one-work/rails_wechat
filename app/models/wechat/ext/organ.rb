@@ -14,6 +14,7 @@ module Wechat
       has_many :corps, class_name: 'Wechat::Corp'
       has_many :agents, class_name: 'Wechat::Agent'
       has_many :payees, class_name: 'Wechat::Payee'
+      has_many :domain_payees, class_name: 'Wechat::Payee', through: :organ_domains, source: :payees
       has_many :scenes, as: :handle, class_name: 'Wechat::Scene'
 
       validates :limit_wechat_menu, inclusion: { in: [0, 1, 2, 3] }
