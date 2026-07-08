@@ -64,12 +64,7 @@ module Wechat
 
     def current_provider_app
       return @current_provider_app if defined? @current_provider_app
-      if current_organ
-        @current_provider_app = current_organ.provider&.app
-      else
-        @current_provider_app = App.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).global.take
-      end
-
+      @current_provider_app = (current_organ && current_organ.provider&.app) || App.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).global.take
       logger.debug "\e[35m  Current Admin Oauth App: #{@current_provider_app&.base_class_name}/#{@current_provider_app&.id}  \e[0m"
       @current_provider_app
     end
