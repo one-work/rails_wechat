@@ -33,7 +33,7 @@ module Wechat
           r.merge! first: { value: notification.title }
         else
           if key.start_with?('time')
-            r.merge! key => { value: notification.notifiable_detail[value[:value]].to_fs(:wechat) }
+            r.merge! key => { value: notification.notifiable_detail[value[:value]].to_datetime.to_fs(:wechat) }
           else
             r.merge! key => { value: notification.notifiable_detail[value[:value]] }
           end
