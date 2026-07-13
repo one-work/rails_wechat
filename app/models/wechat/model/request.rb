@@ -147,17 +147,14 @@ module Wechat
     end
 
     def reply_for_member
-      url = scene_organ.redirect_url(
-        auth_token: wechat_user.auth_token,
-        controller: 'me/home',
-        host: "admin.#{Rails.application.routes.default_url_options[:host]}"
-      )
-      desc = "#{scene_organ.name}欢迎您\n点击链接进入门店后台"
-
       reply_params(
         title: wechat_user.attributes['name'].present? ? "您好，#{wechat_user.attributes['name']}" : '您好',
-        description: desc,
-        url: url
+        description: "#{scene_organ.name}欢迎您\n点击链接进入门店后台",
+        url: scene_organ.redirect_url(
+          auth_token: wechat_user.auth_token,
+          controller: 'me/home',
+          host: scene_organ.admin_host
+        )
       )
     end
 
