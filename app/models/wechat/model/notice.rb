@@ -29,13 +29,16 @@ module Wechat
     def data
       r = {}
       template.data_mappings.each do |key, value|
+        text = notification.notifiable_detail[value[:value]]
         if key == 'first' && value[:value].blank?
           r.merge! first: { value: notification.title }
         else
           if key.start_with?('time')
-            r.merge! key => { value: notification.notifiable_detail[value[:value]].to_datetime.to_fs(:wechat) }
+            r.merge! key => { value: text.to_datetime.to_fs(:wechat) }
+          elsif key.start_with?('thing')
+            r.merge! key => { value: text.truncate(20) }
           else
-            r.merge! key => { value: notification.notifiable_detail[value[:value]] }
+            r.merge! key => { value: text }
           end
         end
       end
