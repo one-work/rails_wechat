@@ -32,7 +32,11 @@ module Wechat
         if key == 'first' && value[:value].blank?  # todo 这个逻辑好像微信不支持了，可以删除了
           r.merge! key => { value: notification.title }
         elsif value[:value] == 'sending_at'
-          r.merge! key => { value: notification.sending_at.to_fs(:wechat) }
+          if notification.sending_at
+            r.merge! key => { value: notification.sending_at.to_fs(:wechat) }
+          else
+            r.merge! key => { value: notification.created_at.to_fs(:wechat) }
+          end
         else
           text = notification.notifiable_detail[value[:value]]
 
