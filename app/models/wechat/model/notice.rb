@@ -29,8 +29,10 @@ module Wechat
     def data
       r = {}
       template.data_mappings.each do |key, value|
-        if key == 'first' && value[:value].blank?
+        if key == 'first' && value[:value].blank?  # todo 这个逻辑好像微信不支持了，可以删除了
           r.merge! key => { value: notification.title }
+        elsif value[:value] == 'sending_at'
+          r.merge! key => { value: notification.sending_at.to_fs(:wechat) }
         else
           text = notification.notifiable_detail[value[:value]]
 
