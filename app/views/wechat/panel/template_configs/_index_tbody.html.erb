@@ -6,8 +6,12 @@
   <p><%= model.title %></p>
 </td>
 <td>
-  <p class="text-grey"><%= model.description %></p>
-  <p><%= model.content %></p>
+<% model.template_key_words.each do |tkw| %>
+  <p>
+    <span><%= tkw.note %></span>
+    <span class="tag"><%= tkw.mapping %></span>
+  </p>
+<% end %>
 </td>
 <td>
   <p><%= model.notifiable_type %></p>
