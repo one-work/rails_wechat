@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: @payee, scope: '', url: { action: 'update_cert' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= f.file_field :p12 %>
     <%= f.file_field :cert %>
     <%= f.file_field :key %>
