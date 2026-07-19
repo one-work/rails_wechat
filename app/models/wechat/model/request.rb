@@ -256,6 +256,12 @@ module Wechat
         else
           reply = build_empty_reply
         end
+      elsif wechat_user.unionid.blank?
+        reply = reply_params(
+          title: '您好，点击链接接收消息',
+          description: '点击授权',
+          url: app.oauth2_url(controller: 'wechat/apps', action: 'scan_login')
+        )
       else
         reply = reply_from_rule || reply_from_response || reply_for_user || build_empty_reply
       end
