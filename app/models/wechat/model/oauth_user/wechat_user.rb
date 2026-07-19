@@ -180,6 +180,5 @@ module Wechat
       end
     end
 
-
   end
 end
