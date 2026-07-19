@@ -8,7 +8,7 @@
   <%= yield %>
 </tr>
 <% model.menus.order(position: :desc).each do |child| %>
-  <%= render partial: 'menu_tbody', layout: 'menu_tr', locals: { model: child } %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: child } %>
 <% end %>
 <tr>
   <td colspan="5">
