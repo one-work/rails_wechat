@@ -8,13 +8,13 @@
   <%= yield %>
 </tr>
 <% model.menus.order(position: :desc).each do |child| %>
-  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: child } %>
+  <%= render partial: 'menu_tbody', layout: 'menu_tr', locals: { model: child } %>
 <% end %>
 <tr>
   <td colspan="5">
     <%= button_to({ controller: 'menus', action: 'new', menu_root_id: model.id }, class: 'pl-4') do %>
       <%= svg_tag 'plus' %>
-      <span class="ml-1"><%= t('.menus.new.title') %></span>
+      <span><%= t('.menus.new.title') %></span>
     <% end %>
   </td>
 </tr>
