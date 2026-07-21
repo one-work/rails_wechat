@@ -8,10 +8,11 @@ module Wechat
       @program_user = @app.generate_wechat_user(params[:code])
       @program_user.save!
       @program_user.auth_appid = params[:auth_appid]
+      auth_token = @program_user.auth_token(host: request.host)
 
-      headers['Authorization'] = @program_user.auth_token
+      headers['Authorization'] = auth_token
       @result = {
-        auth_token: @program_user.auth_token,
+        auth_token: auth_token,
         program_user: @program_user.as_json(only: [:name, :avatar_url, :uid, :unionid, :identity]),
         user: @program_user.user.as_json(only: [:name], methods: [:avatar_url])
       }
@@ -33,7 +34,7 @@ module Wechat
     def mobile
       if @program_user && @program_user.get_phone_number!(session_params)
         @result = {
-          auth_token: @program_user.auth_token,
+          auth_token: @program_user.auth_token(host: request.host),
           program_user: @program_user.as_json(only: [:name, :avatar_url, :uid, :unionid, :identity]),
           user: @program_user.user.as_json(only: [:name], methods: [:avatar_url])
         }
