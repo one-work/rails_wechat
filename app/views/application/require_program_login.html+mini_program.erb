@@ -5,7 +5,8 @@
   data-mini-program-url-value="/pages/login/index"
   data-mini-program-data-value="<%=
     {
-      url: url_for(controller: 'wechat/program_users', action: 'create', only_path: false),
+      url: url_for(controller: 'wechat/program_users', action: 'create', host: request.domain),
+      host: request.host,
       state: state,
       auth_appid: Rails.configuration.x.appid.presence
     }.compact.to_json

@@ -64,13 +64,13 @@ module Wechat
           URI::HTTPS.build(host: organ_domain).to_s,
           URI::HTTPS.build(host: Rails.app.routes.default_url_options[:host]).to_s,
           URI::HTTPS.build(host: "admin.#{Rails.app.routes.default_url_options[:host]}").to_s,
+          URI::HTTPS.build(host: "partner.#{Rails.app.routes.default_url_options[:host]}").to_s,
           *extra
         ],
         wsrequestdomain: [URI::WSS.build(host: organ_domain).to_s],
         uploaddomain: [URI::HTTPS.build(host: organ_domain).to_s],
         downloaddomain: [
           URI::HTTPS.build(host: organ_domain).to_s,
-          URI::HTTPS.build(host: ENV['HOST']).to_s,
           URI::HTTPS.build(host: "admin.#{Rails.app.routes.default_url_options[:host]}").to_s,
           URI::HTTPS.build(host: 'images.one.work').to_s
         ],
