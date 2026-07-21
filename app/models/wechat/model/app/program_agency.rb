@@ -44,8 +44,8 @@ module Wechat
         webviewdomain: [
           URI::HTTPS.build(host: computed_webview_domain).to_s,
           URI::HTTPS.build(host: domain).to_s,
-          URI::HTTPS.build(host: Rails.application.routes.default_url_options[:host]).to_s,
-          URI::HTTPS.build(host: "mp.#{Rails.application.routes.default_url_options[:host]}").to_s
+          URI::HTTPS.build(host: Rails.app.routes.default_url_options[:host]).to_s,
+          URI::HTTPS.build(host: "mp.#{Rails.app.routes.default_url_options[:host]}").to_s
         ].uniq.compact
       }
 
@@ -62,8 +62,8 @@ module Wechat
         action: action,
         requestdomain: [
           URI::HTTPS.build(host: organ_domain).to_s,
-          URI::HTTPS.build(host: Rails.application.routes.default_url_options[:host]).to_s,
-          URI::HTTPS.build(host: "admin.#{Rails.application.routes.default_url_options[:host]}").to_s,
+          URI::HTTPS.build(host: Rails.app.routes.default_url_options[:host]).to_s,
+          URI::HTTPS.build(host: "admin.#{Rails.app.routes.default_url_options[:host]}").to_s,
           *extra
         ],
         wsrequestdomain: [URI::WSS.build(host: organ_domain).to_s],
@@ -71,7 +71,7 @@ module Wechat
         downloaddomain: [
           URI::HTTPS.build(host: organ_domain).to_s,
           URI::HTTPS.build(host: ENV['HOST']).to_s,
-          URI::HTTPS.build(host: "admin.#{Rails.application.routes.default_url_options[:host]}").to_s,
+          URI::HTTPS.build(host: "admin.#{Rails.app.routes.default_url_options[:host]}").to_s,
           URI::HTTPS.build(host: 'images.one.work').to_s
         ],
         udpdomain: [URI::Generic.build(host: organ_domain, scheme: 'udp').to_s],

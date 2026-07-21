@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   concern :appable do
     resources :scenes do
       member do
