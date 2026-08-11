@@ -1,6 +1,6 @@
 module Wechat
   class WechatController < BaseController
-    skip_before_action :verify_authenticity_token if whether_filter(:verify_authenticity_token)
+    skip_forgery_protection if whether_filter(:verify_authenticity_token)
     before_action :clear_auth_token, only: [:login]
 
     def auth

@@ -2,7 +2,7 @@ module Wechat
   class ProgramUsersController < BaseController
     before_action :set_app, only: [:create, :mobile]
     before_action :set_wechat_program_user, only: [:info, :mobile]
-    skip_before_action :verify_authenticity_token if whether_filter(:verify_authenticity_token)
+    skip_forgery_protection if whether_filter(:verify_authenticity_token)
 
     def create
       @program_user = @app.generate_wechat_user(params[:code])

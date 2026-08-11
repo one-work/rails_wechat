@@ -1,6 +1,6 @@
 module Wechat
   class PlatformsController < BaseController
-    skip_before_action :verify_authenticity_token, raise: false if whether_filter(:verify_authenticity_token)
+    skip_forgery_protection if whether_filter(:verify_authenticity_token)
     before_action :set_platform, only: [:show, :notify, :message, :callback]
 
     def show
