@@ -87,7 +87,6 @@ module Wechat
         extAppid: appid,
         ext: {
           host: URI::HTTPS.build(host: organ_domain).to_s,
-          auth_host: URI::HTTPS.build(host: organ_domain).to_s,
           webview_host: URI::HTTPS.build(host: computed_webview_domain).to_s,
           path: webview_path
         }
