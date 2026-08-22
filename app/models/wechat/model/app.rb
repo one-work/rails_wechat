@@ -15,11 +15,7 @@ module Wechat
       attribute :appid, :string
       attribute :platform_appid, :string
       attribute :refresh_token, :string
-      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
-        attribute :func_infos, :string, array: true
-      else
-        attribute :func_infos, :json
-      end
+      attribute :func_infos, :json, default: []
       attribute :nick_name, :string
       attribute :head_img, :string
       attribute :user_name, :string
