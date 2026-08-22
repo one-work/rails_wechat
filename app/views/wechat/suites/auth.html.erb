@@ -1,3 +1,1 @@
-<%= turbo_stream.append_body do %>
-  <div data-controller="visit" data-visit-url-value="<%= url_for(controller: '/me/home', host: @corp_user.member.organ.host) %>"></div>
-<% end %>
+<%= turbo_stream.visit url: url_for(controller: '/me/home', host: @corp_user.member.organ.host) %>
