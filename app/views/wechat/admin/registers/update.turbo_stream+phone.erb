@@ -1,11 +1,11 @@
 <% if @register.column_needed?(:license) %>
-  <%= render partial: 'visit', locals: { url: url_for(action: 'edit_license') } %>
+  <%= turbo_stream.visit url: url_for(action: 'edit_license') %>
 <% elsif @register.column_needed?(:license, [:id_avatar, :id_badge]) %>
-  <%= render partial: 'visit', locals: { url: url_for(action: 'edit_id') } %>
+  <%= turbo_stream.visit url: url_for(action: 'edit_id') %>
 <% elsif @register.column_needed?(:license, [:id_avatar, :id_badge], [:bank_name, :bank_number]) %>
-  <%= render partial: 'visit', locals: { url: url_for(action: 'edit_bank') } %>
+  <%= turbo_stream.visit url: url_for(action: 'edit_bank') %>
 <% elsif @register.column_needed?(:license, [:id_avatar, :id_badge], [:bank_name, :bank_number], [:mobile, :email]) %>
-  <%= render partial: 'visit', locals: { url: url_for(action: 'edit_contact') } %>
+  <%= turbo_stream.visit url: url_for(action: 'edit_contact') %>
 <% else %>
-  <%= render partial: 'visit', locals: { url: url_for(action: 'show') } %>
+  <%= turbo_stream.visit url: url_for(action: 'show') %>
 <% end %>
