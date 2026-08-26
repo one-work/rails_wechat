@@ -16,6 +16,11 @@
       href: url_for(controller: 'payee_domains', partner_payee_id: model.id),
       icon: 'globe',
       title: t('.payee_domains.index.title')
+    },
+    {
+      href: url_for(controller: 'payee_domains', action: 'organs', partner_payee_id: model.id),
+      icon: 'buildings',
+      title: t('.payee_domains.organs.title')
     }
   ) { yield }
 %>

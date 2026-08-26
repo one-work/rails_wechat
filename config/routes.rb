@@ -334,6 +334,7 @@ Rails.app.routes.draw do
         resources :payee_domains do
           collection do
             get :organs
+            post :add
           end
         end
         resources :payee_apps do

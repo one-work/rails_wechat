@@ -1,2 +1,10 @@
 <td class="family-monospace"><%= model.name %></td>
-<td><%= model.organ_domain.organ.name %></td>
+<td>
+<% if @organ_ids.include?(model.id) %>
+  <%= svg_tag 'check' %>
+<% else %>
+  <%= button_to({ action: 'add' }, params: { domain_organ_id: model.id }, class: 'button') do %>
+    <span><%= t('.add.title') %></span>
+  <% end %>
+<% end %>
+</td>

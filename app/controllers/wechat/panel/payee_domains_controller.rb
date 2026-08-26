@@ -13,6 +13,7 @@ module Wechat
 
     def organs
       @organs = @payee.organ.organs.page(params[:page])
+      @organ_ids = @payee.payee_domains.pluck(:domain_organ_id)
     end
 
     private
