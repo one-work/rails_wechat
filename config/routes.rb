@@ -252,7 +252,12 @@ Rails.app.routes.draw do
           member do
             match :organ, via: [:get, :post]
           end
-          resources :payee_domains
+          resources :payee_domains do
+            collection do
+              get :organs
+              post :add
+            end
+          end
           resources :payee_apps
         end
       end
