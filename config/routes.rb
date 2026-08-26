@@ -331,7 +331,11 @@ Rails.app.routes.draw do
           match 'cert' => :edit_cert, via: [:get, :post]
           patch 'cert' => :update_cert
         end
-        resources :payee_domains
+        resources :payee_domains do
+          collection do
+            get :organs
+          end
+        end
         resources :payee_apps do
           resources :receivers do
             collection do
