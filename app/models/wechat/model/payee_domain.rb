@@ -12,7 +12,7 @@ module Wechat
 
       belongs_to :payee, foreign_key: :mch_id, primary_key: :mch_id
 
-      before_validation :init_domain_oragn, if: -> { domain_changed? }
+      before_validation :init_domain_organ, if: -> { domain_changed? }
     end
 
     def init_domain_organ

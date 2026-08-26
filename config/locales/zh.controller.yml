@@ -238,6 +238,8 @@ zh:
       payee_domains:
         index:
           title: 域名设置
+        organs:
+          title: 下属门店
       registers:
         index:
           title: 公众号申请
