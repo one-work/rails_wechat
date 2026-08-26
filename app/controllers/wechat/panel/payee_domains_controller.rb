@@ -11,6 +11,10 @@ module Wechat
       @payee_domains = @payee.payee_domains.includes(organ_domain: :organ).default_where(q_params)
     end
 
+    def organs
+      @organs = @payee.organ.organs.page(params[:page])
+    end
+
     private
     def set_payee
       @payee = Payee.find params[:payee_id] || params[:partner_payee_id]
