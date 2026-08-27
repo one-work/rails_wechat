@@ -20,6 +20,15 @@ module Wechat
       @organ_ids = @payee.payee_domains.pluck(:domain_organ_id)
     end
 
+    def add
+      @organ = Organ.find params[:domain_organ_id]
+      @organ.organ_domains.where(kind: ['frontend', 'mp']).each do |od|
+        @payee.organ_domains.build(domain: od.host)
+      end
+      @payee.save
+      @organ_ids = [@organ.id]
+    end
+
     private
     def set_payee
       @payee = Payee.find params[:payee_id] || params[:partner_payee_id]

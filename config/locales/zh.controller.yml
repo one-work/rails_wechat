@@ -240,6 +240,8 @@ zh:
           title: 域名设置
         organs:
           title: 下属门店
+        add:
+          title: 添加域名
       registers:
         index:
           title: 公众号申请
