@@ -1,3 +1,10 @@
 <td><%= model.name %></td>
 <td><%= model.mch_id %></td>
-<td><%= model.organ&.name %></td>
+<td>
+<% if model.organ %>
+  <span><%= model.organ.name %></span>
+  <% if model.organ.official? %>
+    <span class="tag is-primary"><%= model.organ.official_i18n %></span>
+  <% end %>
+<% end %>
+</td>

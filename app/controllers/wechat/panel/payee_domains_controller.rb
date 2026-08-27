@@ -12,7 +12,11 @@ module Wechat
     end
 
     def organs
-      @organs = @payee.organ.organs.page(params[:page])
+      if @payee.organ&.official?
+        @organs = Organ.where(provider_id: [@payee.organ_id, nil]).page(params[:page])
+      else
+        @organs = @payee.organ.organs.page(params[:page])
+      end
       @organ_ids = @payee.payee_domains.pluck(:domain_organ_id)
     end
 
