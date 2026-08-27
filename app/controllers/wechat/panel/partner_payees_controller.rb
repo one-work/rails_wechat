@@ -5,7 +5,10 @@ module Wechat
     before_action :set_new_partner_payee, only: [:new, :create]
 
     def index
-      @partner_payees = @partner.payees.includes(:organ).page(params[:page])
+      q_params = {}
+      q_params.merge! params.permit(:name, :id)
+
+      @partner_payees = @partner.payees.includes(:organ).default_where(q_params).page(params[:page])
     end
 
     def search_organs
@@ -23,6 +26,13 @@ module Wechat
 
     def set_new_partner_payee
       @partner_payee = @partner.payees.build(partner_payee_params)
+    end
+
+    def filter_columns
+      {
+        'id' => { type: 'search', default: true },
+        'name' => { type: 'search', default: true }
+      }
     end
 
     def partner_payee_params
