@@ -10,4 +10,7 @@
       auth_appid: Rails.configuration.x.appid.presence
     }.compact.to_json
   %>"
->登录信息失效，等待授权...</div>
+>
+  <span data-mini-program-target="hidden">登录信息失效，等待授权...</span>
+  <span data-mini-program-target="show" style="display: none">点击重新加载</span>
+</div>
