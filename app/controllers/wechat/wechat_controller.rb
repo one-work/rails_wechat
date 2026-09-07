@@ -49,11 +49,7 @@ module Wechat
     end
 
     def js
-      if params[:url].present?
-        enter_url = URI(params[:url])
-        enter_url.query = nil
-        session[:enter_url] = enter_url.to_s
-      end
+      session[:enter_url] = params[:url]
       if params[:appid].present?
         js_app = App.find_by appid: params[:appid]
       else
