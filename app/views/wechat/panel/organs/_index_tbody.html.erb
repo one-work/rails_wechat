@@ -1,6 +1,6 @@
 <td>
   <%= link_to({ controller: 'org/panel/organs', action: 'show', id: model.id }, class: 'is-several') do %>
-    <%= image_tag model.logo, class: 'image is-64x64' if model.logo.attached? %>
+    <%= image_tag model.logo, class: 'image is-radius is-64x64' if model.logo.attached? %>
     <span><%= model.name %></span>
   <% end %>
 </td>
