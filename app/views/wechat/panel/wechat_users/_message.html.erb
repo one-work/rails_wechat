@@ -2,9 +2,9 @@
   <div class="media is-fit">
     <div class="media-left">
     <% if wechat_user.avatar_url %>
-      <%= image_tag wechat_user.avatar_url, class: 'image is-32x32' %>
+      <%= image_tag wechat_user.avatar_url, class: 'image is-radius is-32x32' %>
     <% else %>
-      <%= image_tag 'avatar.png', class: 'image is-32x32' %>
+      <%= image_tag 'avatar.png', class: 'image is-radius is-32x32' %>
     <% end %>
     </div>
     <div class="media-content">
@@ -19,9 +19,9 @@
       </div>
       <div class="media-right">
         <% if model.app.head_img.present? %>
-          <%= image_tag model.app.head_img, class: 'image is-32x32' %>
+          <%= image_tag model.app.head_img, class: 'image is-radius is-32x32' %>
         <% else %>
-          <%= image_tag 'logo.png', class: 'image is-32x32' %>
+          <%= image_tag 'logo.png', class: 'image is-radius is-32x32' %>
         <% end %>
       </div>
     </div>
