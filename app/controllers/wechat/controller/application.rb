@@ -118,10 +118,16 @@ module Wechat
       @current_wechat_user = Current.session&.wechat_user
       if @current_wechat_user
         if request.variant.include?(:mini_program) && current_user
-          return if @current_wechat_user.is_a?(ProgramUser)
+          if @current_wechat_user.is_a?(ProgramUser)
+            logger.debug "\e[35m  Current Program User: #{@current_wechat_user.id}  \e[0m"
+            return @current_wechat_user
+          end
           @current_wechat_user = @current_wechat_user.same_oauth_users.where(type: ['Wechat::ProgramUser']).take
         elsif request.variant.include?(:wechat) && current_user
-          return if @current_wechat_user.is_a?(WechatUser)
+          if @current_wechat_user.is_a?(WechatUser)
+            logger.debug "\e[35m  Current Wechat User: #{@current_wechat_user.id}  \e[0m"
+            return @current_wechat_user
+          end
           @current_wechat_user = @current_wechat_user.same_oauth_users.where(type: ['Wechat::WechatUser']).take
         end
       end
