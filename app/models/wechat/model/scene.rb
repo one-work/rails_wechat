@@ -35,8 +35,8 @@ module Wechat
 
       belongs_to :handle, polymorphic: true, optional: true
       belongs_to :app, foreign_key: :appid, primary_key: :appid
-      belongs_to :response, ->(o) { where(appid: o.appid) }, foreign_key: :match_value, primary_key: :match_value, optional: true
-      belongs_to :tag, ->(o) { where(appid: o.appid) }, foreign_key: :tag_name, primary_key: :name, optional: true
+      belongs_to :response, foreign_key: [:appid, :match_value], primary_key: [:appid, :match_value], optional: true
+      belongs_to :tag, foreign_key: [:appid, :tag_name], primary_key: [:appid, :name], optional: true
 
       has_many :menu_apps, ->(o) { where(appid: o.appid) }, dependent: :destroy_async
       has_many :menus, -> { roots }, through: :menu_apps

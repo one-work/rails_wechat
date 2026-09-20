@@ -6,9 +6,9 @@ module Wechat
 
     def index
       q_params = {}
-      q_params.merge! params.permit(:handle_type, :handle_id)
+      q_params.merge! params.permit(:handle_type, :handle_id, :match_value, :state_uuid)
 
-      @scenes = @app.scenes.default_where(q_params).order(id: :desc).page(params[:page])
+      @scenes = @app.scenes.includes(:response).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def sync
