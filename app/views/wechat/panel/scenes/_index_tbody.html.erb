@@ -6,9 +6,7 @@
     <% end %>
   </p>
   <p class="family-monospace"><%= model.qrcode_url %></p>
-</td>
-<td>
-  <p class="family-monospace"><%= model.state_uuid %></p>
+  <p class="family-monospace text-grey"><%= model.state_uuid %></p>
 </td>
 <td>
   <p><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>

@@ -25,6 +25,13 @@ module Wechat
       @scene = @app.scenes.build(scene_params)
     end
 
+    def filter_columns
+      {
+        'match_value' => { type: 'search', default: true },
+        'state_uuid' => { type: 'search', default: true }
+      }
+    end
+
     def scene_params
       params.fetch(:scene, {}).permit(
         :match_value,
