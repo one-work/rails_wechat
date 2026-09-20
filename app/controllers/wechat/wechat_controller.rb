@@ -25,7 +25,7 @@ module Wechat
         @scene.state_uuid = params[:state].presence || state_enter(destroyable: false, state_controller: 'home', state_action: 'index').id
         @scene.save
       else
-        @scene = current_oauth_app.scenes.create(match_value: "session_#{session.id}")
+        @scene = current_oauth_app.scenes.create(match_value: "session_#{session.id}", expire_seconds: 60)
       end
     end
 
@@ -42,7 +42,7 @@ module Wechat
         @scene.state_uuid = params[:state].presence || state_enter(destroyable: false, state_controller: 'admin/home', state_action: 'index').id
         @scene.save
       else
-        @scene = app.scenes.create(match_value: "session_#{session.id}")
+        @scene = app.scenes.create(match_value: "session_#{session.id}", expire_seconds: 60)
       end
     end
 

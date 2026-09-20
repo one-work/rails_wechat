@@ -48,6 +48,7 @@ module Wechat
 
       before_validation :sync_from_app, if: -> { organ_id.blank? && appid.present? && appid_changed? }
       before_validation :init_match_value, if: -> { new_record? && handle }
+      before_validation :init_expire_at, if: -> { expire_seconds.present? && expire_seconds_changed? }
       after_save_commit :to_qrcode!, if: -> { (saved_changes.keys & ['match_value', 'expire_at', 'env_version']).present? }
       after_save_commit :broadcast_to_session, if: -> { saved_change_to_broadcast_to? }
       after_save_commit :refresh_when_expired, if: -> { saved_change_to_expire_at? }
@@ -59,6 +60,10 @@ module Wechat
 
     def init_match_value
       self.match_value = "#{aim}_#{handle_id}_#{organ_id}_#{tag_name}"
+    end
+
+    def init_expire_at
+      self.expire_at = Time.current + expire_seconds
     end
 
     def init_response
