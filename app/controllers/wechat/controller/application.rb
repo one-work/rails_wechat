@@ -64,7 +64,7 @@ module Wechat
 
     def current_provider_app
       return @current_provider_app if defined? @current_provider_app
-      @current_provider_app = (current_organ && current_organ.provider&.app) || App.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).global.take
+      @current_provider_app = (current_organ && current_organ.provider&.app) || App.official.global.take
       logger.debug "\e[35m  Current Admin Oauth App: #{@current_provider_app&.base_class_name}/#{@current_provider_app&.id}  \e[0m"
       @current_provider_app
     end
@@ -74,7 +74,7 @@ module Wechat
       if request.variant.include?(:work_wechat)
         @current_js_app = current_corp_user&.corp
       else
-        @current_js_app = current_organ&.app || current_organ&.provider&.app || App.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).global.take
+        @current_js_app = current_organ&.app || current_organ&.provider&.app || App.official.global.take
       end
 
       logger.debug "\e[35m  Current Js App: #{@current_js_app&.id}  \e[0m"
@@ -83,7 +83,7 @@ module Wechat
 
     def current_wechat_app
       return @current_wechat_app if defined?(@current_wechat_app)
-      @current_wechat_app = current_wechat_user&.app || App.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).global.take
+      @current_wechat_app = current_wechat_user&.app || App.official.global.take
 
       logger.debug "\e[35m  Current Wechat App: #{@current_wechat_app&.id}  \e[0m"
       @current_wechat_app

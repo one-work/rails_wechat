@@ -31,7 +31,7 @@ module Wechat
 
     def admin_login
       if request.subdomain == 'admin'
-        app = App.global.take
+        app = App.official.global.take
       else
         app = current_provider_app
       end
