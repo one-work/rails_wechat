@@ -1,6 +1,6 @@
 <td>
   <p class="is-several">
-    <%= image_tag model.head_img, class: 'image is-24x24' if model.head_img %>
+    <%= image_tag model.head_img, class: 'image is-radius is-24x24' if model.head_img %>
     <span><%= model.nick_name %></span>
     <% if [model.platform.public_agency_id].include?(model.id) %>
       <%= svg_tag 'shield', class: 'icon is-small text-success' %>
