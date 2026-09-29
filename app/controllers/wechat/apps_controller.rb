@@ -68,7 +68,10 @@ module Wechat
     end
 
     def configs
-      r = @app.attributes.slice('service_url', 'service_corp')
+      r = {}
+      r.merge! @app.attributes.slice('service_url', 'service_corp')
+      r.merge! current_organ.theme_settings.slice('backgroundColor', 'frontColor')
+
       render json: r
     end
 
