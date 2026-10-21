@@ -1,0 +1,15 @@
+<div
+  data-controller="douyin-program"
+  data-douyin-program-direct-value="true"
+  data-douyin-program-url-value="/pages/login/index"
+  data-douyin-program-data-value="<%=
+    {
+      url: url_for(controller: 'douyin/douyin_users', action: 'create', host: request.domain),
+      host: request.host,
+      state: state
+    }.compact.to_json
+  %>"
+>
+  <span data-douyin-program-target="hidden">登录信息失效，等待授权...</span>
+  <span data-douyin-program-target="show" style="display: none">登录成功，正在重新加载页面</span>
+</div>
