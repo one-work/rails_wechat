@@ -2,7 +2,7 @@
   <%= svg_tag 'plus' %>
   <span><%= t('.new.title') %></span>
 <% end %>
-<%= link_to({ action: 'users', **request.GET.except(:id) }, class: 'button is-rounded is-info') do %>
+<%= link_to({ action: 'users', **request.GET.except(:id) }, class: 'button is-rounded is-primary') do %>
   <%= svg_tag 'plus' %>
   <span><%= t('wechat.admin.receivers.users.title') %></span>
 <% end %>
