@@ -127,6 +127,7 @@ Rails.app.routes.draw do
         post :notify
       end
     end
+    resources :channels
 
     namespace :me, defaults: { namespace: 'me' } do
       resource :corp_users

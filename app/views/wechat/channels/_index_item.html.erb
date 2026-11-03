@@ -1,0 +1,16 @@
+<div
+  data-controller="mini-program"
+  data-mini-program-url-value="/pages/channels/index"
+  data-mini-program-data-value="<%=
+    { feed_token: model.feed_token }.to_json
+  %>"
+  data-action="click->mini-program#navTo"
+  class="media"
+>
+  <div class="media-content">
+    <span><%= '查看视频' %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+</div>
