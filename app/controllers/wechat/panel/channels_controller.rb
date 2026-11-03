@@ -3,6 +3,8 @@ module Wechat
     before_action :set_app
 
     def index
+      q_params = {}
+
       @channels = @app.channels.default_where(q_params).order(id: :asc).page(params[:page])
     end
 
