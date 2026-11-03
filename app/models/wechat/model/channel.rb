@@ -8,6 +8,7 @@ module Wechat
       attribute :feed_token, :string
       attribute :autoplay, :boolean, default: true
       attribute :looped, :boolean, default: true
+      attribute :appid, :string
 
       belongs_to :app, foreign_key: :appid, primary_key: :appid
     end
