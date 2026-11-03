@@ -52,6 +52,7 @@ Rails.app.routes.draw do
       resources :menu_disables, only: [:create, :destroy]
     end
     resources :menu_root_apps
+    resources :channels
   end
 
   namespace :wechat, defaults: { business: 'wechat' } do
