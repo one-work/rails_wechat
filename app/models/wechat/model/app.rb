@@ -65,6 +65,7 @@ module Wechat
       has_many :responses, primary_key: :appid, foreign_key: :appid
       has_many :wechat_users, primary_key: :appid, foreign_key: :appid
       has_many :payee_apps, primary_key: :appid, foreign_key: :appid
+      has_many :channels, primary_key: :appid, foreign_key: :appid
       has_many :payees, through: :payee_apps
 
       has_one_attached :file
